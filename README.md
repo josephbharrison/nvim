@@ -7,4 +7,4 @@ $ nvim
 ## Screenshot
 ![screen][screen]
 
-[screen]: https://user-images.githubusercontent.com/example.png
+[screen]: https://raw.githubusercontent.com/josephbharrison/nvim/main/images/screen.png
