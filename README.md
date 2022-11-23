@@ -5,11 +5,16 @@
 ## Includes:
 
 - **Language Support**
+  - Bash
+  - C
   - Go
+  - Javascript
   - Rust
+  - Make
   - Python
+  - Protobuf
 - [**Themes:**](https://github.com/topics/neovim-theme)
-  - [shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu)
+  - [shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu) (default)
   - [catppuccin/nvim](https://github.com/catppuccin/nvim)
 - [**NerdFonts:**](https://www.nerdfonts.com)
   - [mononoki](https://www.programmingfonts.org/#mononoki)
@@ -32,6 +37,7 @@ $ install.sh
 - **Linters:** `:MasonInstall <formatter>` or `:Mason`
 - **Formatters:** `:MasonInstall <formatter>` or `:Mason`
 - **Themes:** `<TODO>`
+- **Fonts:** `brew install --cask font-<font>-nerd-font`
 
 ## Screenshot
 

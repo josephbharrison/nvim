@@ -279,6 +279,12 @@ local config = {
         "golangci_lint_ls",
         "gopls",
         "rust_analyzer",
+        "pyright",
+        "dockerls",
+        "tsserver",
+        "bashls",
+        "cmake",
+        "clangd",
       },
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
