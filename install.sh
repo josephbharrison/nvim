@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo -en "Checking prereqs: "
 # Verify homebrew install
+echo -en "Checking prereqs: "
 res=$(brew list)
 if [[ $? -ne 0 ]]; then
     echo "MISSING"
@@ -27,12 +27,14 @@ else
 fi
 
 # Install fonts
-res=$(brew list font-mononoki-nerd-font font-go-mono-nerd-font)
 echo -en "Checking fonts: "
+res=$(brew list --cask font-mononoki-nerd-font font-go-mono-nerd-font &> /dev/null)
 if [[ $? -ne 0 ]]; then
     echo "MISSING"
     echo -en "Installing fonts: "
-    brew tap homebrew/cask-fonts &> /dev/null
+    rm -f /Users/work/Library/Fonts/mononoki*
+    rm -f /Users/work/Library/Fonts/Go\ *
+    brew tap homebrew/cask-fonts &> /dev/null && \
     brew install --cask font-mononoki-nerd-font &> /dev/null && \
     brew install --cask font-go-mono-nerd-font &> /dev/null && echo OK || fail
     echo OK
@@ -42,13 +44,23 @@ fi
 
 
 # Backup nvim
+echo -en "Configuring neovim: "
 now=$(date +%s)
 config=~/.config/nvim
 [[ -d $config ]] && mv -f $config ${config}.${now}.bak
 
 # Clone neovim config
-git clone https://github.com/josephbharrison/nvim.git  ~/.config/nvim
+git clone https://github.com/josephbharrison/nvim.git  ~/.config/nvim &> /dev/null || fail
+echo OK
 
+# HEADLESS INSTALL
 # nvim --headless -c 'autocmd User PackerComplete quitall'
-nvim -c 'autocmd User PackerComplete quitall'
+# INTERACTIVE INSTALL
+# nvim -c 'autocmd User PackerComplete quitall'
+
+echo
+echo "Installation complete, run:"
+echo
+echo "    nvim +PackerSync"
+echo 
 
