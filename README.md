@@ -27,13 +27,13 @@ $ install.sh
 
 ## Configuration:
 
-- LSP
+- **LSP:**  
   `:LspInstall [language]`
-- Linters
-  `<TODO>`
-- Formatters
-  `<TODO>`
-- Themes
+- **Linters:**  
+  `:MasonInstall <formatter>` or `:Mason`
+- **Formatters:**  
+  `:MasonInstall <formatter>` or `:Mason`
+- **Themes:**  
   `<TODO>`
 
 ## Screenshot
