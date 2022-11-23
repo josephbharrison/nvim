@@ -38,7 +38,7 @@ $ install.sh
 
 ## Advanced Configuration:
 
-Update the _user_ configuration file: `lua/user/init.lua`
+Update the _user_ configuration file: `~/.config/nvim/lua/user/init.lua`
 
 > See [AstroNvim - Managing User Configuration](https://astronvim.github.io/Configuration/manage_user_config)
 
