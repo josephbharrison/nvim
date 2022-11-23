@@ -4,9 +4,10 @@
 
 ## Includes:
 
-- **Language Support**
+- **Languages:**
   - Bash
   - C
+  - Docker
   - Go
   - Javascript
   - Rust
