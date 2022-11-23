@@ -4,7 +4,7 @@ echo -en "Checking prereqs: "
 # Verify homebrew install
 res=$(brew list)
 if [[ $? -ne 0 ]]; then
-    echo "FAIL"
+    echo "MISSING"
     echo "Installing homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
@@ -27,10 +27,18 @@ else
 fi
 
 # Install fonts
-echo -en "Installing fonts: "
-brew tap homebrew/cask-fonts &> /dev/null
-brew install --cask font-mononoki-nerd-font &> /dev/null && \
-brew install --cask font-go-mono-nerd-font &> /dev/null && echo OK || fail
+res=$(brew list font-mononoki-nerd-font font-go-mono-nerd-font)
+echo -en "Checking fonts: "
+if [[ $? -ne 0 ]]; then
+    echo "MISSING"
+    echo -en "Installing fonts: "
+    brew tap homebrew/cask-fonts &> /dev/null
+    brew install --cask font-mononoki-nerd-font &> /dev/null && \
+    brew install --cask font-go-mono-nerd-font &> /dev/null && echo OK || fail
+    echo OK
+else
+    echo OK
+fi
 
 
 # Backup nvim
