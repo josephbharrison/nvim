@@ -4,13 +4,14 @@
 
 ## Includes:
 
-- **LSP and Formatters:**
+- **Language Support**
   - Go
   - Rust
-- **Themes:**
+  - Python
+- [**Themes:**](https://github.com/topics/neovim-theme)
   - [shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu)
   - [catppuccin/nvim](https://github.com/catppuccin/nvim)
-- **NerdFonts:**
+- [**NerdFonts:**](https://www.nerdfonts.com)
   - [mononoki](https://www.programmingfonts.org/#mononoki)
   - [go-mono](https://www.programmingfonts.org/#go-mono)
 
