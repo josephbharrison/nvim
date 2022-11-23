@@ -34,11 +34,16 @@ $ install.sh
 
 ## Configuration:
 
-- **LSP:** `:LspInstall [language]`
-- **Linters:** `:MasonInstall <formatter>` or `:Mason`
+- **Languages:** `:LspInstall [language]`
+- **Linters:** `:MasonInstall <linter>` or `:Mason`
 - **Formatters:** `:MasonInstall <formatter>` or `:Mason`
-- **Themes:** `<TODO>`
 - **Fonts:** `brew install --cask font-<font>-nerd-font`
+
+## Advanced Configuration:
+
+Update the _user_ configuration file: `lua/user/init.lua`
+
+> See [AstroNvim - Managing User Configuration](https://astronvim.github.io/Configuration/manage_user_config)
 
 ## Screenshot
 
