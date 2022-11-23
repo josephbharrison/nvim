@@ -7,7 +7,7 @@
 - **Languages:**
   - C
   - Go
-  - Javascript
+  - Node
   - Python
   - Rust
   - _Other_ (Bash, Docker, Make, Protobuf)
