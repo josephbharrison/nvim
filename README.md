@@ -26,7 +26,7 @@
 $ install.sh
 ```
 
-2. Set one of the above fonts in iterm2.
+2. Set one of the above fonts in [iTerm2](https://iterm2.com).
    > Preferences > Profile > Text > Font
 
 ## Configuration:
