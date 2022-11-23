@@ -10,7 +10,7 @@
   - Javascript
   - Python
   - Rust
-  - Other (Bash, Docker, Make, Protobuf)
+  - _Other_ (Bash, Docker, Make, Protobuf)
 - [**Themes:**](https://github.com/topics/neovim-theme)
   - [shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu) (default)
   - [catppuccin/nvim](https://github.com/catppuccin/nvim)
