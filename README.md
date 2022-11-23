@@ -20,7 +20,7 @@
 
 ## Installation:
 
-1. Install install neovim:
+1. Install neovim:
 
 ```sh
 $ install.sh
