@@ -16,14 +16,25 @@
 
 ## Installation:
 
-1. Set one of the above fonts in iterm2.
-   > Preferences > Profile > Text > Font
-2. Install install neovim:
+1. Install install neovim:
 
 ```sh
 $ install.sh
-$ nvim
 ```
+
+2. Set one of the above fonts in iterm2.
+   > Preferences > Profile > Text > Font
+
+## Configuration:
+
+- LSP
+  `:LspInstall [language]`
+- Linters
+  `<TODO>`
+- Formatters
+  `<TODO>`
+- Themes
+  `<TODO>`
 
 ## Screenshot
 
