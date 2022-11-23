@@ -5,15 +5,12 @@
 ## Includes:
 
 - **Languages:**
-  - Bash
   - C
-  - Docker
   - Go
   - Javascript
-  - Rust
-  - Make
   - Python
-  - Protobuf
+  - Rust
+  - Other (Bash, Docker, Make, Protobuf)
 - [**Themes:**](https://github.com/topics/neovim-theme)
   - [shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu) (default)
   - [catppuccin/nvim](https://github.com/catppuccin/nvim)
