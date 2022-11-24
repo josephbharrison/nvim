@@ -22,7 +22,11 @@ end
 
 -- global vim config
 if vim.fn.exists "syntax_on" then vim.cmd.syntax "reset" end
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.smartindent = true
 vim.o.termguicolors = true
 vim.o.background = "dark"
-vim.tabstop = 4
 local user_plugin_opts = astronvim.user_plugin_opts
+
