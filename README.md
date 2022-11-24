@@ -5,11 +5,11 @@
 ## Includes:
 
 - [**Languages:**](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)
-  - C
-  - Go
-  - Node
-  - Python
-  - Rust
+  - [C](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#clangd)
+  - [Go](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#gopls)
+  - [Node](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver)
+  - [Python](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright)
+  - [Rust](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer)
   - _Other_ (Bash, Docker, Lua, Make, Protobuf)
 - [**Themes:**](https://github.com/topics/neovim-theme)
   - [shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu) (default)
