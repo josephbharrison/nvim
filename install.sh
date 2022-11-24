@@ -16,6 +16,10 @@ function fail(){
     exit 1
 }
 
+function muddle(){
+    echo "FAIL"
+}
+
 # Install dependencies
 res=$(brew list nvim)
 if [[ $? -ne 0 ]]; then
@@ -23,7 +27,7 @@ if [[ $? -ne 0 ]]; then
     brew update &> /dev/null && brew install nvim &> /dev/null && echo OK || fail
 else
     echo -en "Upgrading neovim: "
-    brew upgrade nvim &> /dev/null && echo OK || fail
+    brew upgrade nvim &> /dev/null && echo OK || muddle
 fi
 
 # Install fonts
