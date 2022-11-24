@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# Clone neovim config
+if [[ $1 == base ]];then
+    REPO=https://github.com/AstroNvim/AstroNvim
+else
+    REPO=https://github.com/josephbharrison/nvim.git
+fi
+
 # Verify homebrew install
 echo -en "Checking prereqs: "
 res=$(brew list)
@@ -38,7 +45,7 @@ if [[ $? -ne 0 ]]; then
     echo -en "Installing fonts: "
     rm -f /Users/work/Library/Fonts/mononoki*
     rm -f /Users/work/Library/Fonts/Go\ *
-    brew tap homebrew/cask-fonts &> /dev/null && \
+    brew tap homebrew/cask-fonts &> /dev/null && 
     brew install --cask font-mononoki-nerd-font &> /dev/null && \
     brew install --cask font-go-mono-nerd-font &> /dev/null && echo OK || fail
     echo OK
@@ -53,9 +60,8 @@ now=$(date +%s)
 config=~/.config/nvim
 [[ -d $config ]] && mv -f $config ${config}.${now}.bak
 
-# Clone neovim config
-git clone https://github.com/josephbharrison/nvim.git  ~/.config/nvim &> /dev/null || fail
-echo OK
+# Install configuration
+git clone $REPO ~/.config/nvim &> /dev/null && echo OK || fail
 
 # HEADLESS INSTALL
 # nvim --headless -c 'autocmd User PackerComplete quitall'
