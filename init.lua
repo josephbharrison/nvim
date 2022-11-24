@@ -21,5 +21,8 @@ if vim.fn.has "nvim-0.8" ~= 1 or vim.version().prerelease then
 end
 
 -- global vim config
-
-vim.cmd("set tabstop=4")
+if vim.fn.exists "syntax_on" then vim.cmd.syntax "reset" end
+vim.o.termguicolors = true
+vim.o.background = "dark"
+vim.tabstop = 4
+local user_plugin_opts = astronvim.user_plugin_opts
