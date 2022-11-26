@@ -27,7 +27,7 @@ local config = {
 
   -- Set colorscheme to use
   -- colorscheme = "astro",
-  colorscheme = "ayu_mirage",
+  colorscheme = "ayu",
 
   -- Add highlight groups in any theme
   highlights = {
@@ -80,7 +80,7 @@ local config = {
   },
 
   -- Default theme configuration
-  ayu_mirage = {
+  ayu = {
     -- Modify the color palette for the astronvim theme
     colors = {
       fg = "#abb2bf",
