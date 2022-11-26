@@ -22,13 +22,20 @@ Installer for [AstroNvim](https://astronvim.github.io) with included custom user
 
 ## Installation
 
+### Prerequisites:
+
+- [Homebrew](https://homebrew.sh)
+- [iTerm2](https://iterm2.com)
+
+### Install:
+
 1. Install neovim:
 
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/josephbharrison/nvim/HEAD/install.sh)"
 ```
 
-2. Set preferred Nerdfont in [iTerm2](https://iterm2.com)
+2. Set preferred Nerdfont in
 
    > Preferences > Profile > Text > Font
 
