@@ -3,7 +3,7 @@
 [AstroNvim](https://astronvim.github.io) variant with included custom user configuration.
 ![desktop][desktop]
 
-## Includes:
+## Includes
 
 - [**Languages:**](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)
   - [C](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#clangd)
@@ -20,7 +20,7 @@
   - [go-mono](https://www.programmingfonts.org/#go-mono)
   - [jetbrains-mono](https://www.programmingfonts.org/#jetbrains-mono)
 
-## Installation:
+## Installation
 
 1. Install neovim:
 
@@ -44,15 +44,15 @@ Start the tutorial:
 nvim +Tutor
 ```
 
-## Key Mappings:
+## Key Mappings
 
-To view 'lead' mappings, open `nvim` press `<Space>`:
+To view 'lead' mappings, open **nvim** press `<Space>`:
 
 ![mappings][mappings]
 
 > The `<Space>` key is the default _maplead_, change with: `vim.g.maplead = "<key>"`
 
-### Navigation (Movements)
+### Navigation (Movements):
 
 | Key Mapping | Description        |
 | ----------- | ------------------ |
@@ -69,7 +69,7 @@ To view 'lead' mappings, open `nvim` press `<Space>`:
 | h           | Move cursor left   |
 | l           | Move cursor right  |
 
-### Leader Mappings
+### Leader Mappings:
 
 | Key Mapping | Description        |
 | ----------- | ------------------ |
