@@ -20,14 +20,14 @@ Installer for [AstroNvim](https://astronvim.github.io) with included custom user
   - [go-mono](https://www.programmingfonts.org/#go-mono)
   - [jetbrains-mono](https://www.programmingfonts.org/#jetbrains-mono)
 
-## Installation
+## Install
 
 ### Prerequisites:
 
 - [Homebrew](https://homebrew.sh)
 - [iTerm2](https://iterm2.com)
 
-### Install:
+### Installation:
 
 1. Install neovim:
 
