@@ -54,7 +54,7 @@ To view 'lead' mappings, open **nvim** and press `<Space>`:
 
 > The `<Space>` key is the default _maplead_, change with: `vim.g.maplead = "<key>"`
 
-### Navigation (Movements):
+### Navigation:
 
 | Key Mapping  | Description                   |
 | ------------ | ----------------------------- |
