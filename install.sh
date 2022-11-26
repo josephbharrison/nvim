@@ -4,7 +4,7 @@ fonts="mononoki go-mono jetbrains-mono"
 
 # Clone neovim config
 ASTRONVIM_REPO=https://github.com/AstroNvim/AstroNvim
-MY_REPO=https://github.com/josephbharrrison/nvim
+MY_REPO=https://github.com/josephbharrison/nvim
 
 # install base configuration only
 [[ $1 == "base" ]] && BASE_ONLY=true
