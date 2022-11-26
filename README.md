@@ -25,7 +25,9 @@
 1. Install neovim:
 
 ```sh
-install.sh
+git clone https@github.com:josephbharrison/nvim.git
+cd nvim/
+./install.sh
 ```
 
 2. Set preferred Nerdfont in [iTerm2](https://iterm2.com)
