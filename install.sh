@@ -48,7 +48,6 @@ if [[ $? -ne 0 ]]; then
     brew tap homebrew/cask-fonts &> /dev/null && 
     brew install --cask font-mononoki-nerd-font &> /dev/null && \
     brew install --cask font-go-mono-nerd-font &> /dev/null && echo OK || fail
-    echo OK
 else
     echo OK
 fi
