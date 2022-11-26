@@ -25,7 +25,7 @@
 1. Install neovim:
 
 ```sh
-$ install.sh
+install.sh
 ```
 
 2. Set preferred Nerdfont in [iTerm2](https://iterm2.com)
@@ -41,7 +41,7 @@ $ install.sh
 Start the tutorial:
 
 ```
-$ nvim +Tutor
+nvim +Tutor
 ```
 
 ## Key Mappings:
