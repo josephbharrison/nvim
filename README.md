@@ -29,6 +29,15 @@ $ install.sh
 2. Set one of the above fonts in [iTerm2](https://iterm2.com).
    > Preferences > Profile > Text > Font
 
+## Key Mappings:
+
+| Key Mapping | Description     |
+| ----------- | --------------- |
+| <Space> e   | Toggle explorer |
+| <Space> c   | Comment line    |
+
+> The `<Space>` key is the default _maplead_, change with: `vim.g.maplead = "<key>"`
+
 ## Configuration:
 
 - **Languages:** `:LspInstall [language]`
