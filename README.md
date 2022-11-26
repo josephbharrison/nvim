@@ -25,7 +25,7 @@
 1. Install neovim:
 
 ```sh
-git clone https@github.com:josephbharrison/nvim.git
+git clone https://github.com:josephbharrison/nvim.git
 cd nvim/
 ./install.sh
 ```
