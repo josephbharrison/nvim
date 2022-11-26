@@ -65,12 +65,15 @@ function configure_neovim(){
 
     [[ -d $config ]] && mv -f $config ${config}.${now}.bak
     # Install configuration
-    git clone $ASTRONVIM_REPO ~/.config/nvim || return 1
+    mkdir -p ~/.config
+    git clone $ASTRONVIM_REPO ~/.config/nvim &> /dev/null || return 1
 
     if [[ $BASE_ONLY != true ]];then
         mkdir -p ~/.config/nvim/lua/user
-        curl -fsS ${MY_REPO}/HEAD/init.lua -o ~/.config/nvim/init.lua || return 1
-        curl -fsS ${MY_REPO}/HEAD/lua/user/init.lua -o ~/.config/nvim/lua/user/init.lua || return 1
+        curl -fsS ${MY_REPO}/HEAD/init.lua \
+            -o ~/.config/nvim/init.lua &> /dev/null || return 1
+        curl -fsS ${MY_REPO}/HEAD/lua/user/init.lua \
+            -o ~/.config/nvim/lua/user/init.lua &> /dev/null || return 1
     fi
 
     return 0
