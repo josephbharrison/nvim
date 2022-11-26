@@ -46,7 +46,7 @@ do
     res=$(brew list --cask font-${font}-nerd-font &> /dev/null)
     if [[ $? -ne 0 ]]; then
         echo "MISSING"
-        echo -en "Installing fonts $font: "
+        echo -en "Installing font $font: "
         sudo rm -f /Users/work/Library/Fonts/${font}* &> /dev/null
         brew tap homebrew/cask-fonts &> /dev/null && 
         brew install --cask font-${font}-nerd-font &> /dev/null && echo OK || fail
