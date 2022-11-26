@@ -71,7 +71,6 @@ function configure_neovim(){
     config=${base}/nvim
     [[ -d $config ]] && mv -f $config ${config}.${now}.bak
     
-
     # Install configuration
     if [[ $BASE_ONLY != true ]];then
         git clone $MY_REPO $config || return 1
