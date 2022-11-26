@@ -67,7 +67,7 @@ nvim +Tutor
 | h           | Move cursor left   |
 | l           | Move cursor right  |
 
-### Other Mappings
+### Leader Mappings
 
 | Key Mapping | Description        |
 | ----------- | ------------------ |
