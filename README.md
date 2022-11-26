@@ -27,7 +27,7 @@
 $ install.sh
 ```
 
-2. (Optionally) Import [iTerm2](https://iterm2.com) profile: `profiles/iterm2/Afterglow.json`
+2. (Optionally) Import [iTerm2](https://iterm2.com) [profile](profiles/iterm2/Afterglow.json)
 
 3. Set one of the above fonts in [iTerm2](https://iterm2.com)
    > Preferences > Profile > Text > Font
