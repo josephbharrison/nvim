@@ -46,7 +46,7 @@ nvim +Tutor
 
 ## Key Mappings
 
-To view 'lead' mappings, open **nvim** press `<Space>`:
+To view 'lead' mappings, open **nvim** and press `<Space>`:
 
 ![mappings][mappings]
 
