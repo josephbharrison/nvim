@@ -56,19 +56,19 @@ To view 'lead' mappings, open **nvim** and press `<Space>`:
 
 ### Navigation (Movements):
 
-| Key Mapping | Description        |
-| ----------- | ------------------ |
-| `<Space>` e | Toggle explorer    |
-| `<Shift>` l | Next buffer (tab)  |
-| `<Shift>` h | Prev buffer (tab)  |
-| `<Ctrl>` l  | Next window, right |
-| `<Ctrl>` h  | Next window, left  |
-| `<Ctrl>` j  | Next window, down  |
-| `<Ctrl>` k  | Next window, up    |
-| j           | Move cursor down   |
-| k           | Move cursor up     |
-| h           | Move cursor left   |
-| l           | Move cursor right  |
+| Key Mapping | Description                 |
+| ----------- | --------------------------- |
+| `<Space>` e | Toggle explorer (tree view) |
+| `<Shift>` l | Next buffer (tab)           |
+| `<Shift>` h | Prev buffer (tab)           |
+| `<Ctrl>` l  | Next window, right          |
+| `<Ctrl>` h  | Next window, left           |
+| `<Ctrl>` j  | Next window, down           |
+| `<Ctrl>` k  | Next window, up             |
+| j           | Move cursor down            |
+| k           | Move cursor up              |
+| h           | Move cursor left            |
+| l           | Move cursor right           |
 
 ### Leader Mappings:
 
