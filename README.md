@@ -45,14 +45,14 @@ $ install.sh
 
 | Key Mapping | Description       |
 | ----------- | ----------------- |
+| `<Space>` e | Toggle explorer   |
+| `<Space>` o | Focus explorer    |
 | `<Shift>` l | Next buffer (tab) |
 | `<Shift>` h | Prev buffer (tab) |
 | `<Ctrl>` l  | Next window       |
 | `<Ctrl>` h  | Prev window       |
-| `<Space>` e | Toggle explorer   |
-| `<Space>` o | Focus explorer    |
 
-### Other Plugins
+### Other Mappings
 
 | Key Mapping | Description        |
 | ----------- | ------------------ |
