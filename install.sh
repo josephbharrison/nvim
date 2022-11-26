@@ -75,6 +75,7 @@ function configure_neovim(){
         mkdir -p ~/.config/nvim/lua/user
         curl -fsS ${MY_REPO}/HEAD/init.lua -o ${config}/init.lua || return 1
         curl -fsS ${MY_REPO}/HEAD/lua/user/init.lua -o ${config}/lua/user/init.lua || return 1
+        curl -fsS ${MY_REPO}/HEAD/lua/default_theme/init.lua -o ${config}/lua/default_theme/init.lua || return 1
     fi
 
     return 0
