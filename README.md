@@ -31,9 +31,26 @@ $ install.sh
 
 ## Key Mappings:
 
-| Key Mapping | Description     |
-| ----------- | --------------- |
-| `<Space>` e | Toggle explorer |
+| Key Mapping | Description        |
+| ----------- | ------------------ |
+| `<Space>` / | Comment line       |
+| `<Space>` C | Force close buffer |
+| `<Space>` c | Close buffer       |
+| `<Space>` d | Alpha Dashboard    |
+| `<Space>` e | Toggle explorer    |
+| `<Space>` h | No highlight       |
+| `<Space>` o | Focus explorer     |
+| `<Space>` q | Quite              |
+| `<Space>` w | Save               |
+| `<Space>` b | +Buffer            |
+| `<Space>` f | +File              |
+| `<Space>` g | +Git               |
+| `<Space>` l | +LSP               |
+| `<Space>` p | +Packages          |
+| `<Space>` S | +Session           |
+| `<Space>` s | +Search            |
+| `<Space>` t | +Terminal          |
+| `<Space>` u | +UI                |
 
 > The `<Space>` key is the default _maplead_, change with: `vim.g.maplead = "<key>"`
 
