@@ -27,6 +27,4 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.termguicolors = true
-vim.o.background = "dark"
-local user_plugin_opts = astronvim.user_plugin_opts
 
