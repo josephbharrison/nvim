@@ -4,3 +4,4 @@ lua/packer_compiled.lua
 plugin
 ftplugin
 spell
+.DS_Store
