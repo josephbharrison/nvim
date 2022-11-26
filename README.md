@@ -41,6 +41,19 @@ $ install.sh
 
 > The `<Space>` key is the default _maplead_, change with: `vim.g.maplead = "<key>"`
 
+### Navigation
+
+| Key Mapping | Description       |
+| ----------- | ----------------- |
+| `<Shift>` l | Next buffer (tab) |
+| `<Shift>` h | Prev buffer (tab) |
+| `<Ctrl>` l  | Next window       |
+| `<Ctrl>` h  | Prev window       |
+| `<Space>` e | Toggle explorer   |
+| `<Space>` o | Focus explorer    |
+
+### Other Plugins
+
 | Key Mapping | Description        |
 | ----------- | ------------------ |
 | `<Space>` / | Comment line       |
@@ -49,13 +62,13 @@ $ install.sh
 | `<Space>` d | Alpha Dashboard    |
 | `<Space>` e | Toggle explorer    |
 | `<Space>` h | No highlight       |
-| `<Space>` o | Focus explorer     |
 | `<Space>` q | Quit               |
 | `<Space>` w | Save               |
 | `<Space>` b | +Buffer            |
 | `<Space>` f | +File              |
 | `<Space>` g | +Git               |
 | `<Space>` l | +LSP               |
+| `<Space>` o | Focus explorer     |
 | `<Space>` p | +Packages          |
 | `<Space>` S | +Session           |
 | `<Space>` s | +Search            |
