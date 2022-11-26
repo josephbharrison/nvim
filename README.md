@@ -33,8 +33,7 @@ $ install.sh
 
 | Key Mapping | Description     |
 | ----------- | --------------- |
-| <Space> e   | Toggle explorer |
-| <Space> c   | Comment line    |
+| `<Space>` e | Toggle explorer |
 
 > The `<Space>` key is the default _maplead_, change with: `vim.g.maplead = "<key>"`
 
