@@ -46,6 +46,8 @@ nvim +Tutor
 
 ## Key Mappings:
 
+To view 'lead' mappings, open `nvim` press `<Space>`:
+
 ![mappings][mappings]
 
 > The `<Space>` key is the default _maplead_, change with: `vim.g.maplead = "<key>"`
