@@ -302,7 +302,11 @@ local config = {
     end,
     treesitter = { -- overrides `require("treesitter").setup(...)`
       ensure_installed = { 
+          "bash",
+          "c",
+          "go",
           "lua",
+          "python",
           "rust",
       },
     },
