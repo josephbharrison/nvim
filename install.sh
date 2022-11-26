@@ -4,7 +4,7 @@ fonts="mononoki go-mono jetbrains-mono"
 
 # Clone neovim config
 ASTRONVIM_REPO=https://github.com/AstroNvim/AstroNvim
-MY_REPO=https://raw.githubusercontent.com/josephbharrison/nvim
+MY_REPO=https://github.com/josephbharrrison/nvim
 
 # install base configuration only
 [[ $1 == "base" ]] && BASE_ONLY=true
@@ -69,13 +69,16 @@ function configure_neovim(){
     [[ -d $config ]] && mv -f $config ${config}.${now}.bak
     # Install configuration
     mkdir -p $base
-    git clone $ASTRONVIM_REPO $config || return 1
 
     if [[ $BASE_ONLY != true ]];then
-        mkdir -p ~/.config/nvim/lua/user
-        curl -fsS ${MY_REPO}/HEAD/init.lua -o ${config}/init.lua || return 1
-        curl -fsS ${MY_REPO}/HEAD/lua/user/init.lua -o ${config}/lua/user/init.lua || return 1
-        curl -fsS ${MY_REPO}/HEAD/lua/astro/init.lua -o ${config}/lua/astro/init.lua || return 1
+        git clone $MY_REPO $config || return 1
+        # RAW_REPO=https://raw.githubusercontent.com/josephbharrison/nvim
+        # mkdir -p ~/.config/nvim/lua/user
+        # curl -fsS ${RAW_REPO}/HEAD/init.lua -o ${config}/init.lua || return 1
+        # curl -fsS ${RAW_REPO}/HEAD/lua/user/init.lua -o ${config}/lua/user/init.lua || return 1
+        # curl -fsS ${RAW_REPO}/HEAD/lua/astro/init.lua -o ${config}/lua/astro/init.lua || return 1
+    else
+        git clone $ASTRONVIM_REPO $config || return 1
     fi
 
     return 0
