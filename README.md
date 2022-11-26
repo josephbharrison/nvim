@@ -39,9 +39,7 @@
 
 ## User Guide
 
-Start the tutorial:
-
-```
+```sh
 nvim +Tutor
 ```
 
