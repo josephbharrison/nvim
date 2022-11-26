@@ -59,7 +59,6 @@ To view 'lead' mappings, open **nvim** and press `<Space>`:
 | Key Mapping | Description        |
 | ----------- | ------------------ |
 | `<Space>` e | Toggle explorer    |
-| `<Space>` o | Focus explorer     |
 | `<Shift>` l | Next buffer (tab)  |
 | `<Shift>` h | Prev buffer (tab)  |
 | `<Ctrl>` l  | Next window, right |
@@ -97,8 +96,8 @@ To view 'lead' mappings, open **nvim** and press `<Space>`:
 ## Configuration:
 
 - **Languages:** `:LspInstall [language]`
-- **Linters:** `:MasonInstall <linter>` or `:Mason`
-- **Formatters:** `:MasonInstall <formatter>` or `:Mason`
+- **Linters:** `:MasonInstall <linter>`
+- **Formatters:** `:MasonInstall <formatter>`
 - **Fonts:** `brew install --cask font-<font>-nerd-font`
 
 ## Advanced Configuration:
