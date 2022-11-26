@@ -75,4 +75,4 @@ Update the _user_ configuration file: `~/.config/nvim/lua/user/init.lua`
 ![screen][screen]
 
 [screen]: https://raw.githubusercontent.com/josephbharrison/nvim/main/images/screen.png
-[mappings]: https://raw.githubusercontent.com/josephbharrison/nvim/main/images/screen.png
+[mappings]: https://raw.githubusercontent.com/josephbharrison/nvim/main/images/mappings.png
