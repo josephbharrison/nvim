@@ -81,7 +81,7 @@ function astronvim.updater.reload(quiet)
   -- unload AstroNvim configuration files
   reload_module "user"
   reload_module "configs"
-  reload_module "default_theme"
+  reload_module "astro"
   reload_module "core"
   -- manual unload some plugins that need it if they exist
   reload_module "cmp"
