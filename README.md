@@ -91,14 +91,14 @@ To view 'lead' mappings, open **nvim** and press `<Space>`:
 | `<Space>` t | +Terminal          |
 | `<Space>` u | +UI                |
 
-## Configuration:
+## Configuration
 
 - **Languages:** `:LspInstall [language]`
 - **Linters:** `:MasonInstall <linter>`
 - **Formatters:** `:MasonInstall <formatter>`
 - **Fonts:** `brew install --cask font-<font>-nerd-font`
 
-## Advanced Configuration:
+### Advanced Configuration:
 
 Update the _user_ configuration file: `~/.config/nvim/lua/user/init.lua`
 
