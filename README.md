@@ -1,6 +1,7 @@
 # NeoVim Installer - Mac OS X
 
 [AstroNvim](https://astronvim.github.io) variant with included custom user configuration.
+![screen][screen]
 
 ## Includes:
 
@@ -67,7 +68,7 @@ Update the _user_ configuration file: `~/.config/nvim/lua/user/init.lua`
 
 > See [AstroNvim - Managing User Configuration](https://astronvim.github.io/Configuration/manage_user_config)
 
-## Screenshot
+## Screenshots
 
 ![screen][screen]
 
