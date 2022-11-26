@@ -1,6 +1,6 @@
 # NeoVim Installer - Mac OS X
 
-[AstroNvim](https://astronvim.github.io) variant for Mac OS X with custom configuration.
+[AstroNvim](https://astronvim.github.io) variant for Mac OS X with
 
 ![desktop][desktop]
 
@@ -62,29 +62,6 @@ To view 'lead' mappings, open **nvim** and press `<Space>`:
 | `<Ctrl>` h   | Next window, left             |
 | `<Ctrl>` j   | Next window, down             |
 | `<Ctrl>` k   | Next window, up               |
-
-### Leader Mappings:
-
-| Key Mapping | Description        |
-| ----------- | ------------------ |
-| `<Space>` / | Comment line       |
-| `<Space>` C | Force close buffer |
-| `<Space>` c | Close buffer       |
-| `<Space>` d | Alpha Dashboard    |
-| `<Space>` e | Toggle explorer    |
-| `<Space>` h | No highlight       |
-| `<Space>` q | Quit               |
-| `<Space>` w | Save               |
-| `<Space>` b | +Buffer            |
-| `<Space>` f | +File              |
-| `<Space>` g | +Git               |
-| `<Space>` l | +LSP               |
-| `<Space>` o | Focus explorer     |
-| `<Space>` p | +Packages          |
-| `<Space>` S | +Session           |
-| `<Space>` s | +Search            |
-| `<Space>` t | +Terminal          |
-| `<Space>` u | +UI                |
 
 ## Configuration
 
