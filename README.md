@@ -18,6 +18,7 @@
 - [**NerdFonts:**](https://www.nerdfonts.com)
   - [mononoki](https://www.programmingfonts.org/#mononoki)
   - [go-mono](https://www.programmingfonts.org/#go-mono)
+  - [jetbrains](https://www.programmingfonts.org/#jetbrains)
 
 ## Installation:
 
