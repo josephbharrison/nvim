@@ -63,10 +63,6 @@ To view 'lead' mappings, open **nvim** and press `<Space>`:
 | `<Ctrl>` h   | Next window, left             |
 | `<Ctrl>` j   | Next window, down             |
 | `<Ctrl>` k   | Next window, up               |
-| j            | Move cursor down              |
-| k            | Move cursor up                |
-| h            | Move cursor left              |
-| l            | Move cursor right             |
 
 ### Leader Mappings:
 
