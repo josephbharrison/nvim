@@ -36,6 +36,14 @@ $ install.sh
 
    > Preferences > Profile > Other Actions... > Import JSON Profiles...
 
+## New NeoVim User Guide
+
+Start the tutorial:
+
+```
+$ nvim +Tutor
+```
+
 ## Key Mappings:
 
 ![mappings][mappings]
