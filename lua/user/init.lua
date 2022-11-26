@@ -87,7 +87,7 @@ local config = {
       bg = "#1e222a",
     },
     highlights = function(hl) -- or a function that returns a new table of colors to set
-      local C = require "default_theme.colors"
+      local C = require "astro.colors"
 
       hl.Normal = { fg = C.fg, bg = C.bg }
 
