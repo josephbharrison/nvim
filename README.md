@@ -34,6 +34,8 @@ $ install.sh
 
 ![mappings][mappings]
 
+> The `<Space>` key is the default _maplead_, change with: `vim.g.maplead = "<key>"`
+
 | Key Mapping | Description        |
 | ----------- | ------------------ |
 | `<Space>` / | Comment line       |
@@ -54,8 +56,6 @@ $ install.sh
 | `<Space>` s | +Search            |
 | `<Space>` t | +Terminal          |
 | `<Space>` u | +UI                |
-
-> The `<Space>` key is the default _maplead_, change with: `vim.g.maplead = "<key>"`
 
 ## Configuration:
 
