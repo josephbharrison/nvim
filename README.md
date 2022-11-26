@@ -15,7 +15,6 @@
   - _Other_ (Bash, Docker, Lua, Make, Protobuf)
 - [**Themes:**](https://github.com/topics/neovim-theme)
   - [shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu) (default)
-  - [catppuccin/nvim](https://github.com/catppuccin/nvim)
 - [**NerdFonts:**](https://www.nerdfonts.com)
   - [mononoki](https://www.programmingfonts.org/#mononoki)
   - [go-mono](https://www.programmingfonts.org/#go-mono)

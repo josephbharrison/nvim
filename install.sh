@@ -3,11 +3,11 @@
 fonts="mononoki go-mono jetbrains-mono"
 
 # Clone neovim config
-if [[ $1 == base ]];then
-    REPO=https://github.com/AstroNvim/AstroNvim
-else
-    REPO=https://github.com/josephbharrison/nvim.git
-fi
+ASTRONVIM_REPO=https://github.com/AstroNvim/AstroNvim
+MY_REPO=https://raw.githubusercontent.com/josephbharrison/nvim
+
+# install base configuration only
+[[ $1 == "base" ]] && BASE_ONLY=true
 
 # Verify homebrew install
 echo -en "Checking prereqs: "
@@ -56,14 +56,27 @@ do
 done
 
 
-# Backup nvim
-echo -en "Configuring neovim: "
-now=$(date +%s)
-config=~/.config/nvim
-[[ -d $config ]] && mv -f $config ${config}.${now}.bak
+# Configure NeoVim
+function configure_neovim(){
+    # Backup nvim
+    echo -en "Configuring neovim: "
+    now=$(date +%s)
+    config=~/.config/nvim
 
-# Install configuration
-git clone $REPO ~/.config/nvim &> /dev/null && echo OK || fail
+    [[ -d $config ]] && mv -f $config ${config}.${now}.bak
+    # Install configuration
+    git clone $ASTRONVIM_REPO ~/.config/nvim || return 1
+
+    if [[ $BASE_ONLY != true ]];then
+        mkdir -p ~/.config/nvim/lua/user
+        curl -fsS ${MY_REPO}/HEAD/init.lua -o ~/.config/nvim/init.lua || return 1
+        curl -fsS ${MY_REPO}/HEAD/lua/user/init.lua -o ~/.config/nvim/lua/user/init.lua || return 1
+    fi
+
+    return 0
+}
+
+configure_neovim && echo OK || fail 
 
 # HEADLESS INSTALL
 # nvim --headless -c 'autocmd User PackerComplete quitall'
