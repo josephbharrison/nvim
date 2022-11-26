@@ -20,7 +20,7 @@ local treesitter = {
   ["@include"] = { fg = C.purple },
   ["@keyword"] = { fg = C.purple },
   ["@keyword.function"] = { fg = C.purple },
-  ["@keyword.function.rust"] = { fg = C.orange },
+  ["@keyword.function.rust"] = { fg = C.purple },
   ["@keyword.operator"] = { fg = C.purple },
   ["@label"] = { fg = C.blue },
   ["@literal.markdown"] = { fg = C.green },

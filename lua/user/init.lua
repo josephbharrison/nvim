@@ -25,7 +25,7 @@ local config = {
     -- },
   },
 
-  -- -- Set colorscheme to use
+  -- Set colorscheme to use
   -- colorscheme = "default_theme",
   colorscheme = "ayu-mirage",
 
@@ -72,11 +72,11 @@ local config = {
 
   -- Set dashboard header
   header = {
-     "███    ██ ██████  ████  ██   ██ ██ ██      ██",
-     "████   ██ ██     ██  ██ ██   ██ ██ ████  ████",
-     "██ ██  ██ ████   ██  ██ ██   ██ ██ ██ ████ ██",
-     "██  ██ ██ ██     ██  ██  ██ ██  ██ ██  ██  ██",
-     "██   ████ ██████  ████    ███   ██ ██      ██",
+    "    ███    ██ ██    ██ ██ ███    ███",
+    "    ████   ██ ██    ██ ██ ████  ████",
+    "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
+    "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
+    "    ██   ████   ████   ██ ██      ██",
   },
 
   -- Default theme configuration
@@ -121,12 +121,6 @@ local config = {
       vimwiki = false,
       ["which-key"] = true,
     },
-  },
-
-  -- indent-o-matic config
-  ["indent-o-matic"] = {
-    max_lines = 2048,
-    standard_widths = { 2, 4, 8 },
   },
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
@@ -239,13 +233,6 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-        {
-          "catppuccin/nvim",
-          as = "catppuccin",
-          config = function()
-            require("catppuccin").setup({})
-          end,
-        },
         {
           "shatur/neovim-ayu",
           as = "ayu",
