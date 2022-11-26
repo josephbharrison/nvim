@@ -81,7 +81,7 @@ local config = {
 
   -- Default theme configuration
   ayu = {
-    -- Modify the color palette for the astronvim theme
+    -- Modify the color palette for the ayu-dark theme
     colors = {
       fg = "#abb2bf",
       bg = "#1e222a",
@@ -123,7 +123,7 @@ local config = {
     },
   },
 
-  -- Default theme configuration
+  -- AstroNvim theme configuration
   astro = {
     -- Modify the color palette for the astronvim theme
     colors = {
@@ -301,7 +301,10 @@ local config = {
       return config -- return final config table
     end,
     treesitter = { -- overrides `require("treesitter").setup(...)`
-      -- ensure_installed = { "lua" },
+      ensure_installed = { 
+          "lua",
+          "rust",
+      },
     },
     -- use mason-lspconfig to configure LSP installations
     ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
@@ -324,7 +327,7 @@ local config = {
       ensure_installed = {
           "clang-format",
           "gofumpt",
-          "prettier"
+          "prettier",
       },
     },
   },
