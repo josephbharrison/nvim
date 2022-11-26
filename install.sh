@@ -15,7 +15,7 @@ res=$(brew list)
 if [[ $? -ne 0 ]]; then
     echo "MISSING"
     echo "Installing homebrew"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "NONINTERACTIVE=1 $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     echo "OK"
 fi
