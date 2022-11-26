@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  -- colorscheme = "default_theme",
+  -- colorscheme = "astro",
   colorscheme = "ayu-mirage",
 
   -- Add highlight groups in any theme
@@ -80,7 +80,7 @@ local config = {
   },
 
   -- Default theme configuration
-  default_theme = {
+  astro = {
     -- Modify the color palette for the default theme
     colors = {
       fg = "#abb2bf",
