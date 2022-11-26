@@ -50,16 +50,22 @@ nvim +Tutor
 
 > The `<Space>` key is the default _maplead_, change with: `vim.g.maplead = "<key>"`
 
-### Navigation
+### Navigation (Movements)
 
-| Key Mapping | Description       |
-| ----------- | ----------------- |
-| `<Space>` e | Toggle explorer   |
-| `<Space>` o | Focus explorer    |
-| `<Shift>` l | Next buffer (tab) |
-| `<Shift>` h | Prev buffer (tab) |
-| `<Ctrl>` l  | Next window       |
-| `<Ctrl>` h  | Prev window       |
+| Key Mapping | Description        |
+| ----------- | ------------------ |
+| `<Space>` e | Toggle explorer    |
+| `<Space>` o | Focus explorer     |
+| `<Shift>` l | Next buffer (tab)  |
+| `<Shift>` h | Prev buffer (tab)  |
+| `<Ctrl>` l  | Next window, right |
+| `<Ctrl>` h  | Next window, left  |
+| `<Ctrl>` j  | Next window, down  |
+| `<Ctrl>` k  | Next window, up    |
+| j           | Move cursor down   |
+| k           | Move cursor up     |
+| h           | Move cursor left   |
+| l           | Move cursor right  |
 
 ### Other Mappings
 
