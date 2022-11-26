@@ -25,6 +25,10 @@ function fail(){
     exit 1
 }
 
+function ok(){
+    echo "OK"
+}
+
 function muddle(){
     echo "FAIL"
 }
@@ -33,10 +37,10 @@ function muddle(){
 res=$(brew list nvim)
 if [[ $? -ne 0 ]]; then
     echo -en "Installing neovim: "
-    brew update &> /dev/null && brew install nvim &> /dev/null && echo OK || fail
+    brew update &> /dev/null && brew install nvim &> /dev/null && ok || fail
 else
     echo -en "Upgrading neovim: "
-    brew upgrade nvim &> /dev/null && echo OK || muddle
+    brew upgrade nvim &> /dev/null && ok || muddle
 fi
 
 # Install fonts
@@ -49,9 +53,9 @@ do
         echo -en "Installing font $font: "
         sudo rm -f /Users/work/Library/Fonts/${font}* &> /dev/null
         brew tap homebrew/cask-fonts &> /dev/null && 
-        brew install --cask font-${font}-nerd-font &> /dev/null && echo OK || fail
+        brew install --cask font-${font}-nerd-font &> /dev/null && ok || fail
     else
-        echo OK
+        ok
     fi
 done
 
@@ -77,7 +81,7 @@ function configure_neovim(){
 }
 
 echo -en "Configuring neovim: "
-configure_neovim &> /dev/null && echo OK || fail 
+configure_neovim &> /dev/null && ok || fail 
 
 # HEADLESS INSTALL
 # nvim --headless -c 'autocmd User PackerComplete quitall'
