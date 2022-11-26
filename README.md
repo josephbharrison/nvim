@@ -45,7 +45,7 @@ $ install.sh
 | `<Space>` e | Toggle explorer    |
 | `<Space>` h | No highlight       |
 | `<Space>` o | Focus explorer     |
-| `<Space>` q | Quite              |
+| `<Space>` q | Quit               |
 | `<Space>` w | Save               |
 | `<Space>` b | +Buffer            |
 | `<Space>` f | +File              |
