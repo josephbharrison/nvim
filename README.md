@@ -23,7 +23,7 @@ Installer for [AstroNvim](https://astronvim.github.io) with included user config
 
 ## Installation
 
-1. Install neovim:
+1. Install neovim
 
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/josephbharrison/nvim/HEAD/install.sh)"
