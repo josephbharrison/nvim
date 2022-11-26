@@ -62,21 +62,19 @@ done
 
 # Configure NeoVim
 function configure_neovim(){
-    # Backup nvim
-    now=$(date +%s)
+    # Create base config if needed
     base=~/.config
-    config=${base}/nvim
-    [[ -d $config ]] && mv -f $config ${config}.${now}.bak
-    # Install configuration
     mkdir -p $base
 
+    # Backup existing 
+    now=$(date +%s)
+    config=${base}/nvim
+    [[ -d $config ]] && mv -f $config ${config}.${now}.bak
+    
+
+    # Install configuration
     if [[ $BASE_ONLY != true ]];then
         git clone $MY_REPO $config || return 1
-        # RAW_REPO=https://raw.githubusercontent.com/josephbharrison/nvim
-        # mkdir -p ~/.config/nvim/lua/user
-        # curl -fsS ${RAW_REPO}/HEAD/init.lua -o ${config}/init.lua || return 1
-        # curl -fsS ${RAW_REPO}/HEAD/lua/user/init.lua -o ${config}/lua/user/init.lua || return 1
-        # curl -fsS ${RAW_REPO}/HEAD/lua/astro/init.lua -o ${config}/lua/astro/init.lua || return 1
     else
         git clone $ASTRONVIM_REPO $config || return 1
     fi
