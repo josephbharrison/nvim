@@ -2,7 +2,7 @@ vim.cmd.highlight "clear"
 if vim.fn.exists "syntax_on" then vim.cmd.syntax "reset" end
 vim.o.background = "dark"
 vim.o.termguicolors = true
-vim.g.colors_name = "default_theme"
+vim.g.colors_name = "astro"
 
 local user_plugin_opts = astronvim.user_plugin_opts
 
