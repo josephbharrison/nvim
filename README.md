@@ -35,11 +35,11 @@ Installer for [AstroNvim](https://astronvim.github.io) with included custom user
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/josephbharrison/nvim/HEAD/install.sh)"
 ```
 
-2. Set preferred Nerdfont in
+2. Set preferred **NerdFont** in **iTerm2**
 
    > Preferences > Profile > Text > Font
 
-3. (Optionally) Import iTerm2 [profile](profiles/iterm2/Afterglow.json)
+3. (Optionally) Import **iTerm2** [profile](profiles/iterm2/Afterglow.json)
 
    > Preferences > Profile > Other Actions... > Import JSON Profiles...
 
