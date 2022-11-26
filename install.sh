@@ -79,7 +79,7 @@ function configure_neovim(){
     return 0
 }
 
-configure_neovim && echo OK || fail 
+configure_neovim &> /dev/null && echo OK || fail 
 
 # HEADLESS INSTALL
 # nvim --headless -c 'autocmd User PackerComplete quitall'
