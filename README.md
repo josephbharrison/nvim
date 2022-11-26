@@ -36,7 +36,7 @@ $ install.sh
 
    > Preferences > Profile > Other Actions... > Import JSON Profiles...
 
-## New NeoVim User Guide
+## User Guide
 
 Start the tutorial:
 
