@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+fonts="mononoki go-mono jetbrains-mono"
+
 # Clone neovim config
 if [[ $1 == base ]];then
     REPO=https://github.com/AstroNvim/AstroNvim
@@ -38,19 +40,20 @@ else
 fi
 
 # Install fonts
-echo -en "Checking fonts: "
-res=$(brew list --cask font-mononoki-nerd-font font-go-mono-nerd-font &> /dev/null)
-if [[ $? -ne 0 ]]; then
-    echo "MISSING"
-    echo -en "Installing fonts: "
-    rm -f /Users/work/Library/Fonts/mononoki*
-    rm -f /Users/work/Library/Fonts/Go\ *
-    brew tap homebrew/cask-fonts &> /dev/null && 
-    brew install --cask font-mononoki-nerd-font &> /dev/null && \
-    brew install --cask font-go-mono-nerd-font &> /dev/null && echo OK || fail
-else
-    echo OK
-fi
+for font in $fonts
+do
+    echo -en "Checking font ${font}: "
+    res=$(brew list --cask font-${font}-nerd-font &> /dev/null)
+    if [[ $? -ne 0 ]]; then
+        echo "MISSING"
+        echo -en "Installing fonts: "
+        sudo rm -f /Users/work/Library/Fonts/${font}* &> /dev/null
+        brew tap homebrew/cask-fonts &> /dev/null && 
+        brew install --cask font-${font}-nerd-font &> /dev/null && echo OK || fail
+    else
+        echo OK
+    fi
+done
 
 
 # Backup nvim
