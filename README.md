@@ -25,9 +25,7 @@ Installer for [AstroNvim](https://astronvim.github.io) with included custom user
 1. Install neovim:
 
 ```sh
-git clone https://github.com/josephbharrison/nvim.git
-cd nvim/
-./install.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/josephbharrison/nvim/HEAD/install.sh)"
 ```
 
 2. Set preferred Nerdfont in [iTerm2](https://iterm2.com)
