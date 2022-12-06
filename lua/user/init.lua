@@ -296,7 +296,6 @@ local config = {
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
       -- config variable is the default configuration table for the setup function call
       -- local null_ls = require "null-ls"
-
       -- Check supported formatters and linters
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
@@ -315,6 +314,7 @@ local config = {
           "lua",
           "python",
           "rust",
+          "clangd",
       },
     },
     -- use mason-lspconfig to configure LSP installations
@@ -328,6 +328,7 @@ local config = {
         "dockerls",
         "tsserver",
         "bashls",
+        "clangd",
       },
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
@@ -337,6 +338,7 @@ local config = {
           "gofumpt",
           "rustfmt",
           "prettier",
+          "clangd-format",
       },
     },
   },

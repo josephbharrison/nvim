@@ -85,13 +85,11 @@ echo -en "Configuring neovim: "
 configure_neovim &> /dev/null && ok || fail 
 
 # HEADLESS INSTALL
-# nvim --headless -c 'autocmd User PackerComplete quitall'
-# INTERACTIVE INSTALL
-# nvim -c 'autocmd User PackerComplete quitall'
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 echo
 echo "Installation complete, run:"
-echo
-echo "    nvim +PackerSync"
-echo 
+#echo
+#echo "    nvim +PackerSync"
+#echo 
 
