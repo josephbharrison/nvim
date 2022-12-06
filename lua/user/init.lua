@@ -27,7 +27,7 @@ local config = {
 
     -- Set colorscheme to use
     -- colorscheme = "astro",
-    colorscheme = "ayu",
+    colorscheme = "nightfox",
 
     -- Add highlight groups in any theme
     highlights = {
@@ -43,6 +43,9 @@ local config = {
     options = {
         opt = {
             -- set to true or false etc.
+            tabstop = 4,
+            expandtab = true,
+            foldmethod = indent,
             relativenumber = true, -- sets vim.opt.relativenumber
             number = true, -- sets vim.opt.number
             spell = false, -- sets vim.opt.spell
@@ -215,6 +218,11 @@ local config = {
 
         -- Add overrides for LSP server settings, the keys are the name of the server
         ["server-settings"] = {
+            pyright = {
+              venvPath = ".",
+              venv = "venv"
+            }
+            
             -- example for addings schemas to yamlls
             -- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
             --   settings = {
@@ -284,21 +292,40 @@ local config = {
                     require("ayu").setup({})
                 end,
             },
+            {
+                "EdenEast/nightfox.nvim",
+                as = "nightfox",
+                config = function()
+                    require("nightfox").setup({})
+                end,
+            },
         },
         -- All other entries override the require("<key>").setup({...}) call for default plugins
-        ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
+        ["null-ls"] = {
+            -- ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
             -- config variable is the default configuration table for the setup function call
             -- local null_ls = require "null-ls"
             -- Check supported formatters and linters
             -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
             -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-            config.sources = {
+            sources = {
                 -- Set a formatter
                 -- null_ls.builtins.formatting.stylua,
                 -- null_ls.builtins.formatting.prettier,
+                -- null_ls.builtins.diagnostics.pylint.with({
+                    -- diagnostics_postprocess = function(diagnostic)
+                        -- diagnostic.code = diagnostic.message_id
+                    -- end,
+                -- }),
+                require("null-ls").builtins.diagnostics.pylint.with({
+                        extra_args = { "--init-hook", "import sys;import os;sys.path.append('.');sys.path.append([r+'/'+d[0] for r, d, f in os.walk('.') if 'site-packages' in d][0])"} 
+                }),
+                require("null-ls").builtins.formatting.isort,
+                require("null-ls").builtins.formatting.autopep8
             }
-            return config -- return final config table
-        end,
+            -- return config -- return final config table
+        -- end,
+        },
         treesitter = { -- overrides `require("treesitter").setup(...)`
             ensure_installed = {
                 "bash",
