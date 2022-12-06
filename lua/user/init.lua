@@ -284,13 +284,6 @@ local config = {
                     require("ayu").setup({})
                 end,
             },
-            {
-                "rust-lang/rust.vim",
-                as = "rustfmt",
-                config = function()
-                    require("rustfmt").setup({})
-                end,
-            },
         },
         -- All other entries override the require("<key>").setup({...}) call for default plugins
         ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
