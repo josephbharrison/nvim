@@ -328,15 +328,12 @@ local config = {
         "dockerls",
         "tsserver",
         "bashls",
-        "cmake",
-        "clangd",
       },
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
       -- ensure_installed = { "prettier", "stylua" },
       ensure_installed = {
-          "clang-format",
           "gofumpt",
           "rustfmt",
           "prettier",
