@@ -360,7 +360,7 @@ local config = {
                                 "gofumpt",
                                 "prettier",
                                 "pylint",
-                                "rustfmt",
+                                "revive",
                         },
                 },
         },
