@@ -27,7 +27,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.termguicolors = true
-vim.cmd "colorscheme ayu-mirage"
+-- vim.cmd "colorscheme ayu-mirage"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }

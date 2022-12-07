@@ -27,7 +27,7 @@ local config = {
 
         -- Set colorscheme to use
         -- colorscheme = "astro",
-        colorscheme = "nightfox",
+        colorscheme = "ayu-dark",
 
         -- Add highlight groups in any theme
         highlights = {
@@ -90,7 +90,7 @@ local config = {
                         bg = "#1e222a",
                 },
                 highlights = function(hl) -- or a function that returns a new table of colors to set
-                        local C = require "ayu-dark.colors"
+                        local C = require "ayu.colors"
 
                         hl.Normal = { fg = C.fg, bg = C.bg }
 
