@@ -17,7 +17,7 @@
   - [astronvim](https://astronvim.github.io)
   - [shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu)
   - [edeneast/nightfox.nvim](https://github.com/EdenEast/nightfox.nvim)
-  - [folke/tokyo-night](https://github.com/folke/tokyonight.nvim) (default)
+  - [folke/tokyonight](https://github.com/folke/tokyonight.nvim) (default)
 - [**NerdFonts:**](https://www.nerdfonts.com)
   - [mononoki](https://www.programmingfonts.org/#mononoki)
   - [go-mono](https://www.programmingfonts.org/#go-mono)
