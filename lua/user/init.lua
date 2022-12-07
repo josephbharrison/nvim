@@ -230,11 +230,11 @@ local config = {
             },
             disabled = { -- disable formatting capabilities for the listed language servers
                 -- "sumneko_lua",
-        },
+            },
             timeout_ms = 1000, -- default format timeout
-                -- filter = function(client) -- fully override the default formatting function
-                --   return true
-                -- end
+            -- filter = function(client) -- fully override the default formatting function
+            --     return true
+            -- end
         },
         -- easily add or disable built in mappings added during LSP attaching
         mappings = {
