@@ -27,7 +27,7 @@ local config = {
 
         -- Set colorscheme to use
         -- colorscheme = "astro",
-        colorscheme = "ayu-dark",
+        colorscheme = "ayu-mirage",
 
         -- Add highlight groups in any theme
         highlights = {
