@@ -279,6 +279,8 @@ local config = {
         n = {
             -- second key is the lefthand side of the map
             -- mappings seen under group name "Buffer"
+            ["<leader>h"]  = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', desc = "Harpoon" },
+            ["<leader>n"]  = { '<cmd>noh<cr>', desc = "No highlight" },
             ["<leader>z"]  = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
             ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
             ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
