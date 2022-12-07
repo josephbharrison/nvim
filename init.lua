@@ -20,14 +20,6 @@ if vim.fn.has "nvim-0.8" ~= 1 or vim.version().prerelease then
     vim.schedule(function() astronvim.notify("Unsupported Neovim Version! Please check the requirements", "error") end)
 end
 
--- global vim config
-if vim.fn.exists "syntax_on" then vim.cmd.syntax "reset" end
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.smartindent = true
-vim.o.termguicolors = true
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
 require("lspconfig").clangd.setup({ capabilities = capabilities })

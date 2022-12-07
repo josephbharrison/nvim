@@ -42,14 +42,22 @@ local config = {
         -- set vim options here (vim.<first_key>.<second_key> = value)
         options = {
                 opt = {
-                        -- set to true or false etc.
+                        -- colors
+                        termguicolors = true,
+                        -- indent
                         tabstop = 4,
+                        shiftwidth = 4,
                         expandtab = true,
+                        smartindent = true,
+                        -- folding
                         foldmethod = 'indent',
-                        relativenumber = true, -- sets vim.opt.relativenumber
+                        foldenable = false,
+                        -- cols/line numbers
                         number = true, -- sets vim.opt.number
+                        relativenumber = true, -- sets vim.opt.relativenumber
                         spell = false, -- sets vim.opt.spell
                         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+                        -- text wrapping
                         wrap = false, -- sets vim.opt.wrap
                 },
                 g = {
@@ -91,15 +99,12 @@ local config = {
                 },
                 highlights = function(hl) -- or a function that returns a new table of colors to set
                         local C = require "ayu.colors"
-
                         hl.Normal = { fg = C.fg, bg = C.bg }
-
                         -- New approach instead of diagnostic_style
                         hl.DiagnosticError.italic = true
                         hl.DiagnosticHint.italic = true
                         hl.DiagnosticInfo.italic = true
                         hl.DiagnosticWarn.italic = true
-
                         return hl
                 end,
                 -- enable or disable highlighting for extra plugins
@@ -135,15 +140,12 @@ local config = {
                 },
                 highlights = function(hl) -- or a function that returns a new table of colors to set
                         local C = require "astro.colors"
-
                         hl.Normal = { fg = C.fg, bg = C.bg }
-
                         -- New approach instead of diagnostic_style
                         hl.DiagnosticError.italic = true
                         hl.DiagnosticHint.italic = true
                         hl.DiagnosticInfo.italic = true
                         hl.DiagnosticWarn.italic = true
-
                         return hl
                 end,
                 -- enable or disable highlighting for extra plugins
