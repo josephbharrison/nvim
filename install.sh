@@ -7,7 +7,7 @@ ASTRONVIM_REPO=https://github.com/AstroNvim/AstroNvim
 MY_REPO=https://github.com/josephbharrison/nvim
 
 # install base configuration only
-[[ $1 == "base" ]] && BASE_ONLY=true
+[[ $1 == "base" ]] && echo "Installing base astronvim only" && BASE_ONLY=true
 
 # Verify homebrew install
 echo -en "Checking prereqs: "
@@ -63,7 +63,7 @@ done
 # Configure NeoVim
 function configure_neovim(){
     # Create base config if needed
-    base=~/.config
+    base=${HOME}/.config
     mkdir -p $base
 
     # Backup existing 
