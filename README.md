@@ -1,6 +1,6 @@
 # NeoVim Installer - Mac OS X
 
-[AstroNvim](https://astronvim.github.io) variant for Mac OS X with
+[AstroNvim](https://astronvim.github.io) variant for Mac OS X
 
 ![desktop][desktop]
 
