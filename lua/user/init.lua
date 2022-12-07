@@ -319,12 +319,13 @@ local config = {
                                 -- diagnostic.code = diagnostic.message_id
                                 -- end,
                                 -- }),
-                                require("null-ls").builtins.diagnostics.pylint.with({
-                                        extra_args = { "--init-hook",
-                                                "import sys;import os;sys.path.append('.');sys.path.append([r+'/'+d[0] for r, d, f in os.walk('.') if 'site-packages' in d][0])" }
-                                }),
-                                require("null-ls").builtins.formatting.isort,
-                                require("null-ls").builtins.formatting.autopep8
+                                -- -- pylint
+                                -- require("null-ls").builtins.diagnostics.pylint.with({
+                                --        extra_args = { "--init-hook",
+                                --                "import sys;import os;sys.path.append('.');sys.path.append([r+'/'+d[0] for r, d, f in os.walk('.') if 'site-packages' in d][0])" }
+                                --}),
+                                --require("null-ls").builtins.formatting.isort,
+                                --require("null-ls").builtins.formatting.autopep8
                         }
                         -- return config -- return final config table
                         -- end,
@@ -361,7 +362,6 @@ local config = {
                                 "clangd-format",
                                 "gofumpt",
                                 "prettier",
-                                "pylint",
                                 "revive",
                         },
                 },
