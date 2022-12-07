@@ -279,6 +279,7 @@ local config = {
         n = {
             -- second key is the lefthand side of the map
             -- mappings seen under group name "Buffer"
+            ["<leader>z"]  = { "<cmd>ZenMode<cr>", desc = "Zen mode" },
             ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
             ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
             ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
