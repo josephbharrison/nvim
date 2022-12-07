@@ -46,6 +46,7 @@
   ],
   "Non-ASCII Ligatures" : true,
   "Scrollback Lines" : 10000,
+  "Draw Powerline Glyphs" : true,
   "Flashing Bell" : false,
   "Cursor Guide Color" : {
     "Red Component" : 0.70214027166366577,
@@ -56,12 +57,14 @@
   },
   "BM Growl" : true,
   "AWDS Window Directory" : "",
+  "Icon" : 1,
   "Ansi 3 Color" : {
     "Green Component" : 0.70980392156862748,
     "Red Component" : 0.89803921568627454,
     "Blue Component" : 0.40392156862745099
   },
   "Use Non-ASCII Font" : true,
+  "Shortcut" : "",
   "Link Color" : {
     "Red Component" : 0,
     "Color Space" : "sRGB",
@@ -69,7 +72,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.35915297269821167
   },
-  "Shortcut" : "",
+  "Answerback String" : "",
   "Background Image Location" : "",
   "Bold Color" : {
     "Green Component" : 0.81568628549575806,
@@ -317,8 +320,9 @@
   },
   "AWDS Pane Directory" : "",
   "Blur" : true,
-  "Vertical Spacing" : 1,
   "Normal Font" : "mononokiNerdFontCompleteM-Bold 16",
+  "Vertical Spacing" : 1,
+  "Session Close Undo Timeout" : 10,
   "Ansi 7 Color" : {
     "Green Component" : 0.81568628549575806,
     "Red Component" : 0.81568628549575806,
@@ -336,12 +340,13 @@
     "Red Component" : 0.96078431606292725,
     "Blue Component" : 0.96078431606292725
   },
+  "Unicode Version" : 9,
   "Ansi 6 Color" : {
     "Green Component" : 0.83853216239999995,
     "Red Component" : 0.49031879989999999,
     "Blue Component" : 0.8118151991
   },
-  "Transparency" : 0,
+  "Transparency" : 0.022839095744680852,
   "Background Color" : {
     "Red Component" : 0.085968017578125,
     "Color Space" : "sRGB",
@@ -357,6 +362,7 @@
     "Red Component" : 0.62333851809999996,
     "Blue Component" : 0.5234466981
   },
+  "Allow Paste Bracketing" : false,
   "Columns" : 80,
   "Visual Bell" : true,
   "ASCII Ligatures" : true,

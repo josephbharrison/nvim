@@ -335,6 +335,13 @@ local config = {
                     require("tokyonight").setup({})
                 end,
             },
+            {
+                "folke/zen-mode.nvim",
+                as = "zen-mode",
+                config = function()
+                    require("zen-mode").setup({})
+                end,
+            },
         },
         -- All other entries override the require("<key>").setup({...}) call for default plugins
         ["null-ls"] = {
