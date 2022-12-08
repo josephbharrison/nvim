@@ -502,7 +502,6 @@ local config = {
                         ["t"] = { name = "Terminal" },
                         ["m"] = { name = "TMux" },
                     },
-                    ["z"] = { name = "Zen" },
                 },
             },
         },
