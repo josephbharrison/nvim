@@ -5,3 +5,4 @@ plugin
 ftplugin
 spell
 .DS_Store
+.luarc.json

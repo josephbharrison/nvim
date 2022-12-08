@@ -63,20 +63,26 @@ done
 # Configure NeoVim
 function configure_neovim(){
     # Create base config if needed
-    base=${HOME}/.config
-    mkdir -p $base
-
-    # Backup existing 
     now=$(date +%s)
-    config=${base}/nvim
-    [[ -d $config ]] && mv -f $config ${config}.${now}.bak
+    config_dir=${HOME}/.config
+    mkdir -p $config_dir
+
+    # Backup nvim configuration
+    nvim_config_dir=${config_dir}/nvim
+    [[ -d $nvim_config_dir ]] && mv -f $nvim_config_dir ${nvim_config_dir}.${now}.bak
+
     
-    # Install configuration
+    # Install nvim configuration
     if [[ $BASE_ONLY != true ]];then
-        git clone $MY_REPO $config || return 1
+        git clone $MY_REPO $nvim_config_dir || return 1
     else
-        git clone $ASTRONVIM_REPO $config || return 1
+        git clone $ASTRONVIM_REPO $nvim_config_dir || return 1
     fi
+    
+    # Backup nvim lua 
+    nvim_local_dir=${HOME}/.local/share/nvim
+    nvim_site_dir=${nvim_local_dir}/site
+    [[ -d $nvim_site_dir ]] && mv -f $nvim_site_dir ${nvim_site_dir}.${now}.bak
 
     return 0
 }
