@@ -4,6 +4,34 @@
 -- You can think of a Lua "table" as a dictionary like data structure the
 -- normal format is "key = value". These also handle array like data structures
 -- where a value with no key simply has an implicit numeric key
+
+
+-- clangd work-around for encoding offset issue
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.offsetEncoding = { "utf-16" }
+require("lspconfig").clangd.setup({ capabilities = capabilities })
+
+-- harpoon functions for quick file access and bookmarks
+require("telescope").load_extension('harpoon')
+local harpoon = {
+    ["hui"] = { function() require("harpoon.ui").toggle_quick_menu() end, desc = "Quick Menu"},
+    ["hfa"] = { function() require("harpoon.mark").add_file() end, desc = "Add File"},
+    ["hnf"] = { function() require("harpoon.ui").nav_next() end, desc = "Next File"},
+    ["hpf"] = { function() require("harpoon.ui").nav_prev() end, desc = "Previous File"},
+    ["hf1"] = { function() require("harpoon.ui").nav_file(1) end, desc = "File 1"},
+    ["hf2"] = { function() require("harpoon.ui").nav_file(2) end, desc = "File 2"},
+    ["hf3"] = { function() require("harpoon.ui").nav_file(3) end, desc = "File 3"},
+    ["hf4"] = { function() require("harpoon.ui").nav_file(4) end, desc = "File 4"},
+    ["hm1"] = { function() require("harpoon.tmux").gotoTerminal(1) end, desc = "TMux 1"},
+    ["hm2"] = { function() require("harpoon.tmux").gotoTerminal(2) end, desc = "TMux 2"},
+    ["hm3"] = { function() require("harpoon.tmux").gotoTerminal(3) end, desc = "TMux 3"},
+    ["hm4"] = { function() require("harpoon.tmux").gotoTerminal(4) end, desc = "TMux 4"},
+    ["ht1"] = { function() require("harpoon.term").gotoTerminal(1) end, desc = "Terminal 1"},
+    ["ht2"] = { function() require("harpoon.term").gotoTerminal(2) end, desc = "Terminal 2"},
+    ["ht3"] = { function() require("harpoon.term").gotoTerminal(3) end, desc = "Terminal 3"},
+    ["ht4"] = { function() require("harpoon.term").gotoTerminal(4) end, desc = "Terminal 4"},
+}
+
 local config = {
 
     -- Configure AstroNvim updates
@@ -279,15 +307,42 @@ local config = {
         n = {
             -- second key is the lefthand side of the map
             -- mappings seen under group name "Buffer"
-            ["<leader>h"]  = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', desc = "Harpoon" },
             ["<leader>n"]  = { '<cmd>noh<cr>', desc = "No highlight" },
-            ["<leader>z"]  = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
-            ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-            ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
-            ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
-            ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+            ["<leader>bb"] = { '<cmd>tabnew<cr>', desc = "New tab" },
+            ["<leader>bc"] = { '<cmd>BufferLinePickClose<cr>', desc = "Pick to close" },
+            ["<leader>bj"] = { '<cmd>BufferLinePick<cr>', desc = "Pick to jump" },
+            ["<leader>bt"] = { '<cmd>BufferLineSortByTabs<cr>', desc = "Sort by tabs" },
+            -- harpoon mapping
+            -- ["<leader>1"]  = false,
+            -- ["<leader>2"]  = false,
+            -- ["<leader>3"]  = false,
+            -- ["<leader>4"]  = false,
+            -- ["<leader>1"]  = harpoon.hf1,
+            -- ["<leader>2"]  = harpoon.hf2,
+            -- ["<leader>3"]  = harpoon.hf3,
+            -- ["<leader>4"]  = harpoon.hf4,
+            ["<leader>h"] = false,
+            ["<leader>ha"] = harpoon.hfa,
+            ["<leader>hh"] = harpoon.hui,
+            ["<leader>hn"] = harpoon.hnf,
+            ["<leader>hp"] = harpoon.hpf,
+            ["<leader>h1"] = harpoon.hf1,
+            ["<leader>h2"] = harpoon.hf2,
+            ["<leader>h3"] = harpoon.hf3,
+            ["<leader>h4"] = harpoon.hf4,
+            ["<leader>ht1"] = harpoon.ht1,
+            ["<leader>ht2"] = harpoon.ht2,
+            ["<leader>ht3"] = harpoon.ht3,
+            ["<leader>ht4"] = harpoon.ht4,
+            ["<leader>hm1"] = harpoon.hm1,
+            ["<leader>hm2"] = harpoon.hm2,
+            ["<leader>hm3"] = harpoon.hm3,
+            ["<leader>hm4"] = harpoon.hm4,
+            -- zen-mode mappings
+            ["<leader>z"]  = { '<cmd>ZenMode<cr>', desc = "Zen Mode" },
+            -- control commands
             -- quick save
-            -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+            ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
         },
         t = {
             -- setting a mapping to false will disable it
@@ -349,7 +404,20 @@ local config = {
                 "ThePrimeagen/harpoon",
                 as = "harpoon",
                 config = function()
-                    require("harpoon").setup({})
+                    require("harpoon").setup({
+                        -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
+                        save_on_toggle = false,
+                        -- saves the harpoon file upon every change. disabling is unrecommended.
+                        save_on_change = true,
+                        -- sets harpoon to run the command immediately as it's passed to the terminal when calling `sendCommand`.
+                        enter_on_sendcmd = false,
+                        -- closes any tmux windows harpoon that harpoon creates when you close Neovim.
+                        tmux_autoclose_windows = false,
+                        -- filetypes that you want to prevent from adding to the harpoon list menu.
+                        excluded_filetypes = { "harpoon" },
+                        -- set marks specific to each git branch inside git repository
+                        mark_branch = false,
+                    })
                 end,
             },
         },
@@ -469,6 +537,12 @@ local config = {
                     -- third key is the key to bring up next level and its displayed
                     -- group name in which-key top level menu
                     ["b"] = { name = "Buffer" },
+                    ["h"] = { 
+                        name  = "Harpoon", 
+                        ["t"] = { name = "Terminal" },
+                        ["m"] = { name = "TMux" },
+                    },
+                    ["z"] = { name = "Zen" },
                 },
             },
         },
@@ -490,7 +564,7 @@ local config = {
         --         ["~/%.config/foo/.*"] = "fooscript",
         --     },
         -- }
-    end,
+    end
 }
 
 return config
