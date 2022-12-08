@@ -1,0 +1,16 @@
+{
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.workspace.library": [
+        "/Users/work/.config/nvim",
+        "/Users/work/.local/share/nvim/site",
+        "/Users/work/.local/share/nvim/site/pack/packer/start/ayu",
+        "/Users/work/.local/share/nvim/site/pack/packer/start/harpoon",
+        "/Users/work/.local/share/nvim/site/pack/packer/start/impatient.nvim",
+        "/Users/work/.local/share/nvim/site/pack/packer/start/nightfox",
+        "/Users/work/.local/share/nvim/site/pack/packer/start/tokyonight",
+        "/Users/work/.local/share/nvim/site/pack/packer/start/zen-mode",
+        "/opt/homebrew/Cellar/neovim/0.8.1/share/nvim/runtime",
+        "/opt/homebrew/Cellar/neovim/0.8.1/lib/nvim",
+        "${3rd}/luassert/library"
+    ]
+}
