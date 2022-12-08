@@ -27,3 +27,7 @@ require("telescope").load_extension('harpoon')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
 require("lspconfig").clangd.setup({ capabilities = capabilities })
+
+-- global override to set all LSP to 4 indent
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
