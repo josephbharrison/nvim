@@ -33,7 +33,7 @@ local config = {
     updater = {
         remote = "origin", -- remote to use
         channel = "nightly", -- "stable" or "nightly"
-        version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+        version = "latest", -- "latest", tag name, or regex "v1.*"
         branch = "main", -- branch name (NIGHTLY ONLY)
         commit = nil, -- commit hash (NIGHTLY ONLY)
         pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
@@ -187,7 +187,48 @@ local config = {
         },
     },
 
-    -- TokyoNight theme configuration
+    -- NightFox theme configuration
+    nightfox = {
+        -- Modify the color palette for the ayu-dark theme
+        colors = {
+            fg = "#abb2bf",
+            bg = "#1e222a",
+        },
+        highlights = function(hl) -- or a function that returns a new table of colors to set
+            local C = require "nightfox.colors"
+            hl.Normal = { fg = C.fg, bg = C.bg }
+            -- New approach instead of diagnostic_style
+            hl.DiagnosticError.italic = true
+            hl.DiagnosticHint.italic = true
+            hl.DiagnosticInfo.italic = true
+            hl.DiagnosticWarn.italic = true
+            return hl
+        end,
+        -- enable or disable highlighting for extra plugins
+        plugins = {
+            aerial = true,
+            beacon = false,
+            bufferline = true,
+            cmp = true,
+            dashboard = true,
+            highlighturl = true,
+            hop = false,
+            indent_blankline = true,
+            lightspeed = false,
+            ["neo-tree"] = true,
+            notify = true,
+            ["nvim-tree"] = false,
+            ["nvim-web-devicons"] = true,
+            rainbow = true,
+            symbols_outline = false,
+            telescope = true,
+            treesitter = true,
+            vimwiki = false,
+            ["which-key"] = true,
+        },
+    },
+
+    -- Tokyo theme configuration
     tokyonight = {
         -- Modify the color palette for the ayu-dark theme
         colors = {
