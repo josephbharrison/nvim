@@ -142,6 +142,7 @@ local config = {
     },
 
     -- Set colorscheme to use
+    default_theme = colorschemes.tokyonight,
     colorscheme = "tokyonight",
 
     -- Add highlight groups in any theme
