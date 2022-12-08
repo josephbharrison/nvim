@@ -20,8 +20,10 @@ if vim.fn.has "nvim-0.8" ~= 1 or vim.version().prerelease then
     vim.schedule(function() astronvim.notify("Unsupported Neovim Version! Please check the requirements", "error") end)
 end
 
+-- load telecscop extension 'harpoon'
 require("telescope").load_extension('harpoon')
 
+-- clangd offset encoding work-around
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
 require("lspconfig").clangd.setup({ capabilities = capabilities })

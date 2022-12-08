@@ -6,30 +6,25 @@
 -- where a value with no key simply has an implicit numeric key
 
 
--- clangd work-around for encoding offset issue
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.offsetEncoding = { "utf-16" }
-require("lspconfig").clangd.setup({ capabilities = capabilities })
-
 -- harpoon functions for quick file access and bookmarks
-require("telescope").load_extension('harpoon')
 local harpoon = {
-    ["hui"] = { function() require("harpoon.ui").toggle_quick_menu() end, desc = "Quick Menu"},
-    ["hfa"] = { function() require("harpoon.mark").add_file() end, desc = "Add File"},
-    ["hnf"] = { function() require("harpoon.ui").nav_next() end, desc = "Next File"},
-    ["hpf"] = { function() require("harpoon.ui").nav_prev() end, desc = "Previous File"},
-    ["hf1"] = { function() require("harpoon.ui").nav_file(1) end, desc = "File 1"},
-    ["hf2"] = { function() require("harpoon.ui").nav_file(2) end, desc = "File 2"},
-    ["hf3"] = { function() require("harpoon.ui").nav_file(3) end, desc = "File 3"},
-    ["hf4"] = { function() require("harpoon.ui").nav_file(4) end, desc = "File 4"},
-    ["hm1"] = { function() require("harpoon.tmux").gotoTerminal(1) end, desc = "TMux 1"},
-    ["hm2"] = { function() require("harpoon.tmux").gotoTerminal(2) end, desc = "TMux 2"},
-    ["hm3"] = { function() require("harpoon.tmux").gotoTerminal(3) end, desc = "TMux 3"},
-    ["hm4"] = { function() require("harpoon.tmux").gotoTerminal(4) end, desc = "TMux 4"},
-    ["ht1"] = { function() require("harpoon.term").gotoTerminal(1) end, desc = "Terminal 1"},
-    ["ht2"] = { function() require("harpoon.term").gotoTerminal(2) end, desc = "Terminal 2"},
-    ["ht3"] = { function() require("harpoon.term").gotoTerminal(3) end, desc = "Terminal 3"},
-    ["ht4"] = { function() require("harpoon.term").gotoTerminal(4) end, desc = "Terminal 4"},
+    ["menu"] = { function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon Menu"},
+    ["add_file"] = { function() require("harpoon.mark").add_file() end, desc = "Add File"},
+    ["nav_next"] = { function() require("harpoon.ui").nav_next() end, desc = "Next File"},
+    ["nav_prev"] = { function() require("harpoon.ui").nav_prev() end, desc = "Previous File"},
+    ["file_1"] = { function() require("harpoon.ui").nav_file(1) end, desc = "File 1"},
+    ["file_2"] = { function() require("harpoon.ui").nav_file(2) end, desc = "File 2"},
+    ["file_3"] = { function() require("harpoon.ui").nav_file(3) end, desc = "File 3"},
+    ["file_4"] = { function() require("harpoon.ui").nav_file(4) end, desc = "File 4"},
+    ["tmux_1"] = { function() require("harpoon.tmux").gotoTerminal(1) end, desc = "TMux 1"},
+    ["tmux_2"] = { function() require("harpoon.tmux").gotoTerminal(2) end, desc = "TMux 2"},
+    ["tmux_3"] = { function() require("harpoon.tmux").gotoTerminal(3) end, desc = "TMux 3"},
+    ["tmux_4"] = { function() require("harpoon.tmux").gotoTerminal(4) end, desc = "TMux 4"},
+    ["term_1"] = { function() require("harpoon.term").gotoTerminal(1) end, desc = "Terminal 1"},
+    ["term_2"] = { function() require("harpoon.term").gotoTerminal(2) end, desc = "Terminal 2"},
+    ["term_3"] = { function() require("harpoon.term").gotoTerminal(3) end, desc = "Terminal 3"},
+    ["term_4"] = { function() require("harpoon.term").gotoTerminal(4) end, desc = "Terminal 4"},
+    ["telescope"] = { ':Telescope harpoon marks<cr>', desc = "Telescope Marks" },
 }
 
 local config = {
@@ -313,31 +308,24 @@ local config = {
             ["<leader>bj"] = { '<cmd>BufferLinePick<cr>', desc = "Pick to jump" },
             ["<leader>bt"] = { '<cmd>BufferLineSortByTabs<cr>', desc = "Sort by tabs" },
             -- harpoon mapping
-            -- ["<leader>1"]  = false,
-            -- ["<leader>2"]  = false,
-            -- ["<leader>3"]  = false,
-            -- ["<leader>4"]  = false,
-            -- ["<leader>1"]  = harpoon.hf1,
-            -- ["<leader>2"]  = harpoon.hf2,
-            -- ["<leader>3"]  = harpoon.hf3,
-            -- ["<leader>4"]  = harpoon.hf4,
             ["<leader>h"] = false,
-            ["<leader>ha"] = harpoon.hfa,
-            ["<leader>hh"] = harpoon.hui,
-            ["<leader>hn"] = harpoon.hnf,
-            ["<leader>hp"] = harpoon.hpf,
-            ["<leader>h1"] = harpoon.hf1,
-            ["<leader>h2"] = harpoon.hf2,
-            ["<leader>h3"] = harpoon.hf3,
-            ["<leader>h4"] = harpoon.hf4,
-            ["<leader>ht1"] = harpoon.ht1,
-            ["<leader>ht2"] = harpoon.ht2,
-            ["<leader>ht3"] = harpoon.ht3,
-            ["<leader>ht4"] = harpoon.ht4,
-            ["<leader>hm1"] = harpoon.hm1,
-            ["<leader>hm2"] = harpoon.hm2,
-            ["<leader>hm3"] = harpoon.hm3,
-            ["<leader>hm4"] = harpoon.hm4,
+            ["<leader>ha"] = harpoon.add_file,
+            ["<leader>hh"] = harpoon.menu,
+            ["<leader>hn"] = harpoon.nav_next,
+            ["<leader>hp"] = harpoon.nav_prev,
+            ["<leader>h1"] = harpoon.file_1,
+            ["<leader>h2"] = harpoon.file_2,
+            ["<leader>h3"] = harpoon.file_3,
+            ["<leader>h4"] = harpoon.file_4,
+            ["<leader>hm1"] = harpoon.tmux_1,
+            ["<leader>hm2"] = harpoon.tmux_2,
+            ["<leader>hm3"] = harpoon.tmux_3,
+            ["<leader>hm4"] = harpoon.tmux_4,
+            ["<leader>ht1"] = harpoon.term_1,
+            ["<leader>ht2"] = harpoon.term_2,
+            ["<leader>ht3"] = harpoon.term_3,
+            ["<leader>ht4"] = harpoon.term_4,
+            ["<leader>hT"] = harpoon.telescope,
             -- zen-mode mappings
             ["<leader>z"]  = { '<cmd>ZenMode<cr>', desc = "Zen Mode" },
             -- control commands
