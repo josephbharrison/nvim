@@ -322,7 +322,7 @@
   },
   "AWDS Pane Directory" : "",
   "Blur" : true,
-  "Normal Font" : "mononokiNerdFontCompleteM-Regular 16",
+  "Normal Font" : "JetBrainsMonoNerdFontComplete-Regular 16",
   "Vertical Spacing" : 1,
   "Session Close Undo Timeout" : 10,
   "Ansi 7 Color" : {
@@ -358,7 +358,7 @@
   },
   "Screen" : -1,
   "AWDS Window Option" : "No",
-  "Non Ascii Font" : "mononokiNerdFontCompleteM-Regular 18",
+  "Non Ascii Font" : "JetBrainsMonoNerdFontComplete-Regular 16",
   "Ansi 13 Color" : {
     "Green Component" : 0.30697798580000002,
     "Blue Component" : 0.5234466981,
@@ -367,11 +367,11 @@
   "Allow Paste Bracketing" : false,
   "Columns" : 80,
   "Visual Bell" : true,
-  "ASCII Ligatures" : false,
+  "Custom Directory" : "Advanced",
   "Ansi 5 Color" : {
     "Green Component" : 0.30697798579568808,
     "Blue Component" : 0.52344669809931299,
     "Red Component" : 0.62333851809954743
   },
-  "Custom Directory" : "Advanced"
+  "ASCII Ligatures" : true
 }

@@ -8,11 +8,14 @@ $git_branch\
 $git_status\
 [ ](fg:dark-magenta)\
 $docker_context\
+$golang\
+$lua\
+$nodjs\
 $python\
 $time 
 $character
 """
-palette = 'nightfox'
+palette = 'tokyonight'
 
 [directory]
 read_only = " "
@@ -49,7 +52,7 @@ symbol = " "
 symbol = " "
 
 ## Custom palettes
-[palettes.nightfox]
+[palettes.tokyonight]
 dark-blue = '#29394f'
 light-blue = '#719cd6'
 light-green = '#81b29a'
