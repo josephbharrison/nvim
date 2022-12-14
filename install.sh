@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # GLOBAL PARAMETERS
-FONTS="mononoki go-mono jetbrains-mono"
+FONTS="hack mononoki go-mono jetbrains-mono"
 ASTRONVIM_REPO=https://github.com/AstroNvim/AstroNvim
 MY_REPO=https://github.com/josephbharrison/nvim
 
