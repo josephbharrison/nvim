@@ -322,7 +322,7 @@
   },
   "AWDS Pane Directory" : "",
   "Blur" : true,
-  "Normal Font" : "JetBrainsMonoNerdFontComplete-Regular 16",
+  "Normal Font" : "HackNerdFontCompleteM-Regular 17",
   "Vertical Spacing" : 1,
   "Session Close Undo Timeout" : 10,
   "Ansi 7 Color" : {
@@ -358,7 +358,7 @@
   },
   "Screen" : -1,
   "AWDS Window Option" : "No",
-  "Non Ascii Font" : "JetBrainsMonoNerdFontComplete-Regular 16",
+  "Non Ascii Font" : "HackNerdFontCompleteM-Regular 17",
   "Ansi 13 Color" : {
     "Green Component" : 0.30697798580000002,
     "Blue Component" : 0.5234466981,
