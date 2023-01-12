@@ -223,12 +223,35 @@ local config = {
         n = {
             -- second key is the lefthand side of the map
             -- mappings seen under group name "Buffer"
+            ["<leader>n"] = { "<cmd>noh<cr>", desc = "No highlight" },
             ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
             ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
             ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
             ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
+            -- harpoon mapping
+            ["<leader>h"] = false,
+            ["<leader>ha"] = harpoon.add_file,
+            ["<leader>hh"] = harpoon.menu,
+            ["<leader>hn"] = harpoon.nav_next,
+            ["<leader>hp"] = harpoon.nav_prev,
+            ["<leader>h1"] = harpoon.file_1,
+            ["<leader>h2"] = harpoon.file_2,
+            ["<leader>h3"] = harpoon.file_3,
+            ["<leader>h4"] = harpoon.file_4,
+            ["<leader>hm1"] = harpoon.tmux_1,
+            ["<leader>hm2"] = harpoon.tmux_2,
+            ["<leader>hm3"] = harpoon.tmux_3,
+            ["<leader>hm4"] = harpoon.tmux_4,
+            ["<leader>ht1"] = harpoon.term_1,
+            ["<leader>ht2"] = harpoon.term_2,
+            ["<leader>ht3"] = harpoon.term_3,
+            ["<leader>ht4"] = harpoon.term_4,
+            ["<leader>hT"] = harpoon.telescope,
+            -- zen-mode mappings
+            ["<leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
+            -- control commands
             -- quick save
-            -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+            ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
         },
         t = {
             -- setting a mapping to false will disable it
