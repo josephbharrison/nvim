@@ -299,6 +299,7 @@
   },
   "Name" : "NeoVim",
   "Blinking Cursor" : false,
+<<<<<<< HEAD
   "Guid" : "9AA2D564-DF19-46D1-9DF2-986D88F585BF",
   "Idle Code" : 0,
   "Ansi 10 Color" : {
@@ -306,11 +307,23 @@
     "Red Component" : 0.49473804391474724,
     "Blue Component" : 0.31444666754949363
   },
+=======
+  "Guid" : "88D3098E-093C-408B-8927-78DC12FEFC7A",
+>>>>>>> b49c83ed854f435c70fa9865141b4a08a1a0cba4
   "Ansi 8 Color" : {
     "Green Component" : 0.31372550129890442,
     "Red Component" : 0.31372550129890442,
     "Blue Component" : 0.31372550129890442
   },
+<<<<<<< HEAD
+=======
+  "Ansi 10 Color" : {
+    "Green Component" : 0.55576569570135748,
+    "Red Component" : 0.49473804391474724,
+    "Blue Component" : 0.31444666754949363
+  },
+  "Idle Code" : 0,
+>>>>>>> b49c83ed854f435c70fa9865141b4a08a1a0cba4
   "Badge Color" : {
     "Red Component" : 1,
     "Color Space" : "sRGB",
@@ -319,8 +332,13 @@
     "Green Component" : 0.14910027384757996
   },
   "Semantic History" : {
+<<<<<<< HEAD
     "text" : "echo nvim \\1 +\\2",
     "action" : "coprocess",
+=======
+    "action" : "coprocess",
+    "text" : "echo nvim \\1 +\\2",
+>>>>>>> b49c83ed854f435c70fa9865141b4a08a1a0cba4
     "editor" : "com.github.atom"
   },
   "Ambiguous Double Width" : false,
@@ -382,7 +400,7 @@
   "Allow Paste Bracketing" : false,
   "Columns" : 80,
   "Visual Bell" : true,
-  "ASCII Ligatures" : true,
   "Custom Directory" : "Advanced",
+  "ASCII Ligatures" : true,
   "Thin Strokes" : 3
 }
