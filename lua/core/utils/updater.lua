@@ -21,7 +21,7 @@ local options = astronvim.user_plugin_opts("updater", {
 })
 
 -- set the install channel
-if options.branch then options.channel = "nightly" end
+if options.branch and options.branch ~= "main" then options.channel = "nightly" end
 if astronvim.install.is_stable ~= nil then options.channel = astronvim.install.is_stable and "stable" or "nightly" end
 
 astronvim.updater = { options = options }
@@ -81,7 +81,7 @@ function astronvim.updater.reload(quiet)
   -- unload AstroNvim configuration files
   reload_module "user"
   reload_module "configs"
-  reload_module "astro"
+  reload_module "default_theme"
   reload_module "core"
   -- manual unload some plugins that need it if they exist
   reload_module "cmp"

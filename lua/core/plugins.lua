@@ -1,19 +1,21 @@
 local astro_plugins = {
   -- Plugin manager
   ["wbthomason/packer.nvim"] = {
-    cmd = {
-      "PackerSnapshot",
-      "PackerSnapshotRollback",
-      "PackerSnapshotDelete",
-      "PackerInstall",
-      "PackerUpdate",
-      "PackerSync",
-      "PackerClean",
-      "PackerCompile",
-      "PackerStatus",
-      "PackerProfile",
-      "PackerLoad",
-    },
+    setup = function()
+      astronvim.lazy_load_commands("packer.nvim", {
+        "PackerSnapshot",
+        "PackerSnapshotRollback",
+        "PackerSnapshotDelete",
+        "PackerInstall",
+        "PackerUpdate",
+        "PackerSync",
+        "PackerClean",
+        "PackerCompile",
+        "PackerStatus",
+        "PackerProfile",
+        "PackerLoad",
+      })
+    end,
     config = function() require "core.plugins" end,
   },
 
@@ -32,7 +34,7 @@ local astro_plugins = {
 
   -- Notification Enhancer
   ["rcarriga/nvim-notify"] = {
-    opt = true,
+    module = "notify",
     setup = function() astronvim.load_plugin_with_func("nvim-notify", vim, "notify") end,
     config = function() require "configs.notify" end,
   },
@@ -65,14 +67,18 @@ local astro_plugins = {
   },
 
   -- Bufferline
-  ["akinsho/bufferline.nvim"] = {
+  ["akinsho/bufferline.nvim"] = { -- TODO v3: remove this plugin
+    disable = vim.g.heirline_bufferline,
     module = "bufferline",
     event = "UIEnter",
     config = function() require "configs.bufferline" end,
   },
 
   -- Better buffer closing
-  ["famiu/bufdelete.nvim"] = { module = "bufdelete", cmd = { "Bdelete", "Bwipeout" } },
+  ["famiu/bufdelete.nvim"] = {
+    module = "bufdelete",
+    setup = function() astronvim.lazy_load_commands("bufdelete.nvim", { "Bdelete", "Bwipeout" }) end,
+  },
 
   ["s1n7ax/nvim-window-picker"] = {
     tag = "v1.*",
@@ -84,9 +90,11 @@ local astro_plugins = {
   ["nvim-neo-tree/neo-tree.nvim"] = {
     branch = "v2.x",
     module = "neo-tree",
-    cmd = "Neotree",
     requires = { { "MunifTanjim/nui.nvim", module = "nui" } },
-    setup = function() vim.g.neo_tree_remove_legacy_commands = true end,
+    setup = function()
+      astronvim.lazy_load_commands("neo-tree.nvim", "Neotree")
+      vim.g.neo_tree_remove_legacy_commands = true
+    end,
     config = function() require "configs.neo-tree" end,
   },
 
@@ -96,22 +104,24 @@ local astro_plugins = {
   -- Syntax highlighting
   ["nvim-treesitter/nvim-treesitter"] = {
     module = "nvim-treesitter",
-    cmd = {
-      "TSBufDisable",
-      "TSBufEnable",
-      "TSBufToggle",
-      "TSDisable",
-      "TSEnable",
-      "TSToggle",
-      "TSInstall",
-      "TSInstallInfo",
-      "TSInstallSync",
-      "TSModuleInfo",
-      "TSUninstall",
-      "TSUpdate",
-      "TSUpdateSync",
-    },
-    setup = function() table.insert(astronvim.file_plugins, "nvim-treesitter") end,
+    setup = function()
+      table.insert(astronvim.file_plugins, "nvim-treesitter")
+      astronvim.lazy_load_commands("nvim-treesitter", {
+        "TSBufDisable",
+        "TSBufEnable",
+        "TSBufToggle",
+        "TSDisable",
+        "TSEnable",
+        "TSToggle",
+        "TSInstall",
+        "TSInstallInfo",
+        "TSInstallSync",
+        "TSModuleInfo",
+        "TSUninstall",
+        "TSUpdate",
+        "TSUpdateSync",
+      })
+    end,
     run = function() require("nvim-treesitter.install").update { with_sync = true }() end,
     config = function() require "configs.treesitter" end,
   },
@@ -167,6 +177,20 @@ local astro_plugins = {
     config = function() require "configs.null-ls" end,
   },
 
+  -- Debugger
+  ["mfussenegger/nvim-dap"] = {
+    disable = vim.fn.has "win32" == 1,
+    module = "dap",
+    config = function() require "configs.dap" end,
+  },
+
+  -- Debugger UI
+  ["rcarriga/nvim-dap-ui"] = {
+    disable = vim.fn.has "win32" == 1,
+    after = "nvim-dap",
+    config = function() require "configs.dapui" end,
+  },
+
   -- Package Manager
   ["williamboman/mason.nvim"] = {
     module = "mason",
@@ -180,8 +204,8 @@ local astro_plugins = {
       "MasonUpdateAll", -- astronvim command
     },
     config = function()
-      vim.tbl_map(function(plugin) pcall(require, plugin) end, { "lspconfig", "null-ls" })
       require "configs.mason"
+      vim.tbl_map(function(plugin) pcall(require, plugin) end, { "lspconfig", "null-ls", "dap" })
     end,
   },
 
@@ -194,6 +218,13 @@ local astro_plugins = {
   -- null-ls manager
   ["jayp0521/mason-null-ls.nvim"] = { after = "null-ls.nvim", config = function() require "configs.mason-null-ls" end },
 
+  -- dap manager
+  ["jayp0521/mason-nvim-dap.nvim"] = {
+    disable = vim.fn.has "win32" == 1,
+    after = "nvim-dap",
+    config = function() require "configs.mason-nvim-dap" end,
+  },
+
   -- LSP symbols
   ["stevearc/aerial.nvim"] = {
     module = "aerial",
@@ -204,8 +235,8 @@ local astro_plugins = {
 
   -- Fuzzy finder
   ["nvim-telescope/telescope.nvim"] = {
-    cmd = "Telescope",
     module = "telescope",
+    setup = function() astronvim.lazy_load_commands("telescope.nvim", "Telescope") end,
     config = function() require "configs.telescope" end,
   },
 
@@ -227,15 +258,21 @@ local astro_plugins = {
 
   -- Start screen
   ["goolord/alpha-nvim"] = {
-    cmd = "Alpha",
     module = "alpha",
+    setup = function() astronvim.lazy_load_commands("alpha-nvim", "Alpha") end,
     config = function() require "configs.alpha" end,
   },
 
   -- Color highlighting
   ["NvChad/nvim-colorizer.lua"] = {
     opt = true,
-    setup = function() table.insert(astronvim.file_plugins, "nvim-colorizer.lua") end,
+    setup = function()
+      astronvim.lazy_load_commands(
+        "nvim-colorizer.lua",
+        { "ColorizerToggle", "ColorizerAttachToBuffer", "ColorizerDetachFromBuffer", "ColorizerReloadAllBuffers" }
+      )
+      table.insert(astronvim.file_plugins, "nvim-colorizer.lua")
+    end,
     config = function() require "configs.colorizer" end,
   },
 
@@ -244,14 +281,14 @@ local astro_plugins = {
 
   -- Terminal
   ["akinsho/toggleterm.nvim"] = {
-    cmd = "ToggleTerm",
-    module = { "toggleterm", "toggleterm.terminal" },
+    module = "toggleterm",
+    setup = function() astronvim.lazy_load_commands("toggleterm.nvim", { "ToggleTerm", "TermExec" }) end,
     config = function() require "configs.toggleterm" end,
   },
 
   -- Commenting
   ["numToStr/Comment.nvim"] = {
-    module = { "Comment", "Comment.api" },
+    module = "Comment",
     keys = { "gc", "gb" },
     config = function() require "configs.Comment" end,
   },
@@ -278,8 +315,8 @@ local astro_plugins = {
   -- Session manager
   ["Shatur/neovim-session-manager"] = {
     module = "session_manager",
-    cmd = "SessionManager",
     event = "BufWritePost",
+    setup = function() astronvim.lazy_load_commands("neovim-session-manager", "SessionManager") end,
     config = function() require "configs.session_manager" end,
   },
 }
@@ -287,7 +324,10 @@ local astro_plugins = {
 if astronvim.updater.snapshot then
   for plugin, options in pairs(astro_plugins) do
     local pin = astronvim.updater.snapshot[plugin:match "/([^/]*)$"]
-    options.commit = pin and pin.commit or options.commit
+    if pin and pin.commit then
+      options.commit = pin.commit
+      options.tag = nil
+    end
   end
 end
 
@@ -303,8 +343,11 @@ if status_ok then
           for mason_plugin, commands in pairs { -- lazy load mason plugin commands with Mason
             ["jayp0521/mason-null-ls.nvim"] = { "NullLsInstall", "NullLsUninstall" },
             ["williamboman/mason-lspconfig.nvim"] = { "LspInstall", "LspUninstall" },
+            ["jayp0521/mason-nvim-dap.nvim"] = { "DapInstall", "DapUninstall" },
           } do
-            if plugins[mason_plugin] then vim.list_extend(plugin.cmd, commands) end
+            if plugins[mason_plugin] and not plugins[mason_plugin].disable then
+              vim.list_extend(plugin.cmd, commands)
+            end
           end
         end
         use(plugin)

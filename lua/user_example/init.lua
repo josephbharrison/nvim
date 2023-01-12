@@ -9,7 +9,7 @@ local config = {
   -- Configure AstroNvim updates
   updater = {
     remote = "origin", -- remote to use
-    channel = "nightly", -- "stable" or "nightly"
+    channel = "stable", -- "stable" or "nightly"
     version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
     branch = "main", -- branch name (NIGHTLY ONLY)
     commit = nil, -- commit hash (NIGHTLY ONLY)
@@ -26,7 +26,7 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "astro",
+  colorscheme = "default_theme",
 
   -- Add highlight groups in any theme
   highlights = {
@@ -57,6 +57,7 @@ local config = {
       status_diagnostics_enabled = true, -- enable diagnostics in statusline
       icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available, requires :PackerSync after changing)
       ui_notifications_enabled = true, -- disable notifications when toggling UI elements
+      heirline_bufferline = false, -- enable new heirline based bufferline (requires :PackerSync after changing)
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -85,14 +86,14 @@ local config = {
   },
 
   -- Default theme configuration
-  astro = {
+  default_theme = {
     -- Modify the color palette for the default theme
     colors = {
       fg = "#abb2bf",
       bg = "#1e222a",
     },
     highlights = function(hl) -- or a function that returns a new table of colors to set
-      local C = require "astro.colors"
+      local C = require "default_theme.colors"
 
       hl.Normal = { fg = C.fg, bg = C.bg }
 
@@ -265,6 +266,9 @@ local config = {
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
       -- ensure_installed = { "prettier", "stylua" },
     },
+    ["mason-nvim-dap"] = { -- overrides `require("mason-nvim-dap").setup(...)`
+      -- ensure_installed = { "python" },
+    },
   },
 
   -- LuaSnip Options
@@ -293,6 +297,32 @@ local config = {
       buffer = 500,
       path = 250,
     },
+  },
+
+  -- Customize Heirline options
+  heirline = {
+    -- -- Customize different separators between sections
+    -- separators = {
+    --   tab = { "", "" },
+    -- },
+    -- -- Customize colors for each element each element has a `_fg` and a `_bg`
+    -- colors = function(colors)
+    --   colors.git_branch_fg = astronvim.get_hlgroup "Conditional"
+    --   return colors
+    -- end,
+    -- -- Customize attributes of highlighting in Heirline components
+    -- attributes = {
+    --   -- styling choices for each heirline element, check possible attributes with `:h attr-list`
+    --   git_branch = { bold = true }, -- bold the git branch statusline component
+    -- },
+    -- -- Customize if icons should be highlighted
+    -- icon_highlights = {
+    --   breadcrumbs = false, -- LSP symbols in the breadcrumbs
+    --   file_icon = {
+    --     winbar = false, -- Filetype icon in the winbar inactive windows
+    --     statusline = true, -- Filetype icon in the statusline
+    --   },
+    -- },
   },
 
   -- Modify which-key registration (Use this with mappings table in the above.)
