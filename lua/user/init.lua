@@ -573,13 +573,26 @@ local config = {
         --   },
         -- }
         --
+        local placeholders = {
+            ["${file}"] = function(_) return vim.fn.expand "%:p" end,
+            ["${fileBasename}"] = function(_) return vim.fn.expand "%:t" end,
+            ["${fileBasenameNoExtension}"] = function(_) return vim.fn.fnamemodify(vim.fn.expand "%:t", ":r") end,
+            ["${fileDirname}"] = function(_) return vim.fn.expand "%:p:h" end,
+            ["${fileExtname}"] = function(_) return vim.fn.expand "%:e" end,
+            ["${relativeFile}"] = function(_) return vim.fn.expand "%:." end,
+            ["${relativeFileDirname}"] = function(_) return vim.fn.fnamemodify(vim.fn.expand "%:.:h", ":r") end,
+            ["${workspaceFolder}"] = function(_) return vim.fn.getcwd() end,
+            ["${workspaceFolderBasename}"] = function(_) return vim.fn.fnamemodify(vim.fn.getcwd(), ":t") end,
+            ["${env:([%w_]+)}"] = function(match) return os.getenv(match) or "" end,
+        }
+
         local dap = require "dap"
         require("dap.ext.vscode").load_launchjs()
         for type, _ in pairs(dap.configurations) do
             for _, config in pairs(dap.configurations[type]) do
                 if config.envFile then
                     local filePath = config.envFile
-                    for key, fn in pairs(dap.get_placeholders()) do
+                    for key, fn in pairs(placeholders) do
                         filePath = filePath:gsub(key, fn)
                     end
                     for line in io.lines(filePath) do
