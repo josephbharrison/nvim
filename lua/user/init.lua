@@ -18,6 +18,14 @@ local harpoon = {
     ["term_4"] = { function() require("harpoon.term").gotoTerminal(4) end, desc = "Terminal 4" },
     ["telescope"] = { ":Telescope harpoon marks<cr>", desc = "Telescope Marks" },
 }
+
+local randPort = function()
+    local port = math.random(30000, 40000)
+    return port
+end
+
+local goPort = randPort()
+
 --              AstroNvim Configuration Table
 -- All configuration changes should go inside of the table below
 
@@ -454,9 +462,21 @@ local config = {
         ["mason-nvim-dap"] = { -- overrides `require("mason-nvim-dap").setup(...)`
             -- ensure_installed = { "python" },
             ensure_installed = {
-                "javascript",
                 "python",
-                "go",
+                "delve",
+            },
+        },
+    },
+
+    dap = {
+        adapters = {
+            go = {
+                type = "server",
+                port = goPort,
+                executable = {
+                    command = "dlv",
+                    args = { "dap", "-l", "127.0.0.1:" .. goPort },
+                },
             },
         },
     },
@@ -552,6 +572,27 @@ local config = {
         --     ["~/%.config/foo/.*"] = "fooscript",
         --   },
         -- }
+        --
+        local dap = require "dap"
+        require("dap.ext.vscode").load_launchjs()
+        for type, _ in pairs(dap.configurations) do
+            for _, config in pairs(dap.configurations[type]) do
+                if config.envFile then
+                    local filePath = config.envFile
+                    for key, fn in pairs(dap.get_placeholders()) do
+                        filePath = filePath:gsub(key, fn)
+                    end
+                    for line in io.lines(filePath) do
+                        local words = {}
+                        for word in string.gmatch(line, "[a-zA-Z0-9_]+") do
+                            table.insert(words, word)
+                        end
+                        if not config.env then config.env = {} end
+                        config.env[words[1]] = words[2]
+                    end
+                end
+            end
+        end
     end,
 }
 
