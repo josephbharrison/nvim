@@ -71,6 +71,12 @@ local config = {
     options = {
         opt = {
             -- set to true or false etc.
+            tabstop = 4,
+            shiftwidth = 4,
+            expandtab = true,
+            smartindent = true,
+            foldmethod = "indent",
+            foldenable = false,
             relativenumber = true, -- sets vim.opt.relativenumber
             number = true, -- sets vim.opt.number
             spell = false, -- sets vim.opt.spell
@@ -427,6 +433,7 @@ local config = {
                 "c",
                 "go",
                 "lua",
+                "proto",
                 "python",
                 "rust",
             },
@@ -451,10 +458,10 @@ local config = {
             -- ensure_installed = { "prettier", "stylua" },
             ensure_installed = {
                 "buf",
-                "clangd-format",
                 "gofumpt",
                 "goimports",
                 "prettier",
+                "protolint",
                 "pylint",
                 "revive",
             },
@@ -573,6 +580,16 @@ local config = {
         --   },
         -- }
         --
+
+        -- -- clangd offset encoding work-around
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.offsetEncoding = { "utf-16" }
+        require("lspconfig").clangd.setup { capabilities = capabilities }
+
+        -- Global DAP configuration
+        local dap = require "dap"
+        require("dap.ext.vscode").load_launchjs()
+
         local placeholders = {
             ["${file}"] = function(_) return vim.fn.expand "%:p" end,
             ["${fileBasename}"] = function(_) return vim.fn.expand "%:t" end,
@@ -586,8 +603,6 @@ local config = {
             ["${env:([%w_]+)}"] = function(match) return os.getenv(match) or "" end,
         }
 
-        local dap = require "dap"
-        require("dap.ext.vscode").load_launchjs()
         for type, _ in pairs(dap.configurations) do
             for _, config in pairs(dap.configurations[type]) do
                 if config.envFile then
