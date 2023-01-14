@@ -441,9 +441,10 @@ local config = {
         -- use mason-lspconfig to configure LSP installations
         ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
             -- ensure_installed = { "sumneko_lua" },
+            -- "clangd",
             ensure_installed = {
                 "bashls",
-                "clangd",
+                "bufls",
                 "dockerls",
                 "golangci_lint_ls",
                 "sumneko_lua",
@@ -456,12 +457,11 @@ local config = {
         -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
         ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
             -- ensure_installed = { "prettier", "stylua" },
+            -- "protolint",
             ensure_installed = {
-                "buf",
                 "gofumpt",
                 "goimports",
                 "prettier",
-                "protolint",
                 "pylint",
                 "revive",
             },
@@ -582,9 +582,9 @@ local config = {
         --
 
         -- -- clangd offset encoding work-around
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.offsetEncoding = { "utf-16" }
-        require("lspconfig").clangd.setup { capabilities = capabilities }
+        -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+        -- capabilities.offsetEncoding = { "utf-16" }
+        -- require("lspconfig").clangd.setup { capabilities = capabilities }
 
         -- Global DAP configuration
         local dap = require "dap"

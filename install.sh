@@ -88,11 +88,19 @@ function configure_neovim(){
     return 0
 }
 
+function packer_count(){
+    echo $(ps -ef | grep -c "/[p]acker/")
+}
+
 function packer_sync(){
     # HEADLESS INSTALL
     echo -en "Updating packages: "
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' &> /dev/null &
-    sleep 5
+    while [[ $(packer_count) -gt 0 ]]
+    do
+        printf "\r$(packer_count)"
+        sleep 1
+    done
 }
 
 function install(){
@@ -108,6 +116,6 @@ install
 echo
 echo "Installation complete, run:"
 echo
-echo "    nvim +PackerSync"
-echo 
+echo "    $(which nvim)"
+echo
 
