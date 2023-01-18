@@ -1,12 +1,12 @@
 format = """
-[](bg:none fg:dark-blue)\
+[](bg:none fg:none)\
 [  ](bg:dark-blue fg:bold white)\
-[ ](fg:dark-blue bg:light-green)\
-$directory\
-[ ](fg:light-green bg:dark-magenta)\
+[  ](fg:dark-blue bg:green)\
+[$directory ](fg:dark-blue bg:green)\
+[  ](fg:green bg:dark-magenta)\
 $git_branch\ 
 $git_status\
-[ ](fg:dark-magenta)\
+[  ](fg:dark-magenta)\
 $docker_context\
 $golang\
 $lua\
@@ -19,11 +19,18 @@ palette = 'tokyonight'
 
 [directory]
 read_only = " "
-style = "bg:light-green fg:bold black"
-format = "[ $path ]($style)"
+style = "bg:green fg:bold black"
+format = "[$path]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
+[directory.substitutions]
+"~/" = "ﮟ "
+"~" = "ﮟ"
+"ﮟ code" = ""
+"ﮟ Documents" = ""
+"ﮟ Desktop" = ""
+"ﮟ Downloads" = "ﰮ"
 [docker_context]
 symbol = " "
 
