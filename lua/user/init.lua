@@ -55,7 +55,7 @@ local config = {
     },
 
     -- Set colorscheme to use
-    colorscheme = "tokyonight",
+    colorscheme = "kanagawa",
 
     -- Add highlight groups in any theme
     highlights = {
@@ -297,6 +297,11 @@ local config = {
             --     require("lsp_signature").setup()
             --   end,
             -- },
+            {
+                "rebelot/kanagawa.nvim",
+                as = "kanagawa",
+                config = function() require("kanagawa").setup {} end,
+            },
             {
                 "shatur/neovim-ayu",
                 as = "ayu",
