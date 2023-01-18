@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 
 return {
-	font = wezterm.font("Hack Nerd Font Mono", { weight = "Regular" }),
+	font = wezterm.font("Hack Nerd Font", { weight = "Regular" }),
 	font_size = 16,
 	color_scheme = "tokyonight",
 	window_padding = { left = 4, right = 4, top = 4, bottom = 4 },
