@@ -94,7 +94,6 @@ function packer_sync(){
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' &> /dev/null &
     while [[ $(packer_count) -gt 0 ]]
     do
-        printf "\r$(packer_count)"
         sleep 1
     done
 }
