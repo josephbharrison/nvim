@@ -28,10 +28,6 @@ function ok(){
     echo "OK"
 }
 
-function muddle(){
-    echo "FAIL"
-}
-
 function install_fonts(){
     # Install fonts
     echo -en "Installing fonts: "
