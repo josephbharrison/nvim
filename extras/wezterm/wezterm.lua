@@ -1,3 +1,4 @@
+local os = require("os")
 local wezterm = require("wezterm")
 local act = wezterm.action
 
@@ -156,6 +157,25 @@ local colors = {
 	},
 }
 
+local checkEnv = function(e, t)
+	local envvar = os.getenv(e)
+	if envvar == nil then
+		envvar = "NOT_FOUND"
+	end
+	wezterm.log_info(envvar)
+	return envvar == t
+end
+
+local isTmux = function()
+	local tmux = checkEnv("TERM_PROGRAM", "tmux")
+	local WezTerm = checkEnv("TERM_PROGRAM", "WezTerm")
+	if tmux or WezTerm then
+		return true
+	else
+		return false
+	end
+end
+
 local color = function(c)
 	return string.lower(colors[c].rgb)
 end
@@ -250,7 +270,184 @@ local colorschemes = {
 	},
 }
 
-return {
+local UpdateKeyTable = function()
+	local action
+	if isTmux() then
+		wezterm.log_info("activating tmux keytable")
+		action = act.ActivateKeyTable({
+			name = "tmux",
+			one_shot = false,
+			replace_current = true,
+		})
+	else
+		wezterm.log_info("activating wezterm keytable")
+		action = act.ActivateKeyTable({
+			name = "wezterm",
+			one_shot = false,
+			replace_current = true,
+		})
+	end
+	wezterm.log_info("UpdateKeyTable result: ", action)
+	return action
+end
+
+function DeepCopy(obj)
+	local copyTable = {}
+
+	local function copy(o)
+		if type(o) ~= "table" then
+			return o
+		end
+		local newTable = {}
+		copyTable[o] = newTable
+		for k, v in pairs(o) do
+			newTable[copy(k)] = copy(v)
+		end
+		return setmetatable(newTable, getmetatable(o))
+	end
+
+	copyTable = copy(obj)
+
+	return copyTable
+end
+
+function os.capture(cmd, raw)
+	local f = assert(io.popen(cmd, "r"))
+	local s = assert(f:read("*a"))
+	f:close()
+	if raw then
+		return s
+	end
+	s = string.gsub(s, "^%s+", "")
+	s = string.gsub(s, "%s+$", "")
+	s = string.gsub(s, "[\n\r]+", " ")
+	return s
+end
+
+local tmuxActions = {
+	cmd_d = act.Multiple({ act.SendKey({ key = "a", mods = "CTRL" }), act.SendKey({ key = "|" }) }),
+	cmd_shift_d = act.Multiple({ act.SendKey({ key = "a", mods = "CTRL" }), act.SendKey({ key = "-" }) }),
+	cmd_w = act.SendKey({ key = "d", mods = "CTRL" }),
+}
+
+-- dictionary contains all possible key mappings
+local keymap = {
+	cmd_d = {
+		key = "d",
+		mods = "CMD",
+		action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+	},
+	cmd_shift_d = {
+		key = "d",
+		mods = "CMD|SHIFT",
+		action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+	},
+	cmd_RightArrow = {
+		key = "RightArrow",
+		mods = "CMD",
+		action = act.ActivatePaneDirection("Right"),
+	},
+	cmd_LeftArrow = {
+		key = "LeftArrow",
+		mods = "CMD",
+		action = act.ActivatePaneDirection("Left"),
+	},
+	cmd_UpArrow = {
+		key = "UpArrow",
+		mods = "CMD",
+		action = act.ActivatePaneDirection("Up"),
+	},
+	cmd_DownArrow = {
+		key = "DownArrow",
+		mods = "CMD",
+		action = act.ActivatePaneDirection("Down"),
+	},
+	cmd_RightBracket = {
+		key = "]",
+		mods = "CMD",
+		action = act.ActivatePaneDirection("Next"),
+	},
+	cmd_LeftBracket = {
+		key = "[",
+		mods = "CMD",
+		action = act.ActivatePaneDirection("Next"),
+	},
+	cmd_w = {
+		key = "w",
+		mods = "CMD",
+		action = act.CloseCurrentPane({ confirm = false }),
+	},
+	cmd_shift_Enter = {
+		key = "Enter",
+		mods = "CMD|SHIFT",
+		action = act.TogglePaneZoomState,
+	},
+	cmd_ctrl_f = {
+		key = "f",
+		mods = "CMD|CTRL",
+		action = act.ToggleFullScreen,
+	},
+	cmd_shift_k = {
+		key = "k",
+		mods = "CMD|SHIFT",
+		action = UpdateKeyTable(),
+	},
+	cmd_shift_t = {
+		key = "t",
+		mods = "CMD|SHIFT",
+		action = act.ActivateKeyTable({
+			name = "tmux",
+			one_shot = false,
+			replace_current = true,
+		}),
+	},
+	cmd_shift_w = {
+		key = "w",
+		mods = "CMD|SHIFT",
+		action = act.ActivateKeyTable({
+			name = "wezterm",
+			one_shot = false,
+			replace_current = true,
+		}),
+	},
+}
+
+local actionmap = {
+	tmux = tmuxActions,
+}
+
+local function getKeys(name)
+	local actions = actionmap[name]
+	local newKeys = {}
+	local mapCopy = DeepCopy(keymap)
+	for k, v in pairs(mapCopy) do
+		local newKey = v
+		if actions ~= nil and actions[k] ~= nil then
+			newKey.action = actions[k]
+		end
+		table.insert(newKeys, newKey)
+	end
+	wezterm.log_info("name: ", name, "newKeys: ", newKeys)
+	return newKeys
+end
+
+wezterm.on("window-focus-changed", function(window, pane)
+	if isTmux() then
+		wezterm.log_info("term type: tmux")
+		UpdateKeyTable()
+	end
+end)
+
+-- Show which key table is active in the status area
+wezterm.on("update-right-status", function(window, pane)
+	local name = window:active_key_table()
+	if name then
+		name = "TABLE: " .. name
+	end
+	window:set_right_status(name or "")
+end)
+
+local config = {
 	font = wezterm.font("Hack Nerd Font", { weight = "Regular" }),
 	font_size = 20,
 	window_padding = { left = 4, right = 4, top = 4, bottom = 0 },
@@ -259,61 +456,16 @@ return {
 	force_reverse_video_cursor = true,
 	colors = colorschemes.kanagawa,
 	scrollback_lines = 5000,
-	keys = {
-		{
-			key = "d",
-			mods = "CMD",
-			action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-		},
-		{
-			key = "D",
-			mods = "CMD",
-			action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
-		},
-		{
-			key = "RightArrow",
-			mods = "CMD",
-			action = act.ActivatePaneDirection("Right"),
-		},
-		{
-			key = "LeftArrow",
-			mods = "CMD",
-			action = act.ActivatePaneDirection("Left"),
-		},
-		{
-			key = "UpArrow",
-			mods = "CMD",
-			action = act.ActivatePaneDirection("Up"),
-		},
-		{
-			key = "DownArrow",
-			mods = "CMD",
-			action = act.ActivatePaneDirection("Down"),
-		},
-		{
-			key = "]",
-			mods = "CMD",
-			action = act.ActivatePaneDirection("Next"),
-		},
-		{
-			key = "[",
-			mods = "CMD",
-			action = act.ActivatePaneDirection("Next"),
-		},
-		{
-			key = "w",
-			mods = "CMD",
-			action = wezterm.action.CloseCurrentPane({ confirm = false }),
-		},
-		{
-			key = "Enter",
-			mods = "CMD|SHIFT",
-			action = wezterm.action.TogglePaneZoomState,
-		},
-		{
-			key = "f",
-			mods = "CMD|CTRL",
-			action = wezterm.action.ToggleFullScreen,
-		},
+	key_tables = {
+		tmux = getKeys("tmux"),
+		wezterm = getKeys("wezterm"),
 	},
+	keys = getKeys("default"),
 }
+
+wezterm.log_info("config: ", config)
+
+local envvars = os.capture("printenv", true)
+wezterm.log_info(envvars)
+
+return config
