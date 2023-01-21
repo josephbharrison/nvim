@@ -271,24 +271,21 @@ local colorschemes = {
 }
 
 local UpdateKeyTable = function()
-	local action
 	if isTmux() then
 		wezterm.log_info("activating tmux keytable")
-		action = act.ActivateKeyTable({
+		return act.ActivateKeyTable({
 			name = "tmux",
 			one_shot = false,
 			replace_current = true,
 		})
 	else
 		wezterm.log_info("activating wezterm keytable")
-		action = act.ActivateKeyTable({
+		return act.ActivateKeyTable({
 			name = "wezterm",
 			one_shot = false,
 			replace_current = true,
 		})
 	end
-	wezterm.log_info("UpdateKeyTable result: ", action)
-	return action
 end
 
 function DeepCopy(obj)
