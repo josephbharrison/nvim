@@ -124,7 +124,7 @@ function configure_environment(){
     # Configure starship
     mkdir -p $config_dir/starship
     cp $extras_dir/starship/* $config_dir/starship/
-    cp $extras_dir/starship/default.toml $config_dir/
+    cp $extras_dir/starship/default.toml $config_dir/starship.toml
 
     # Configure bash
     cp $extras_dir/bash/.bash_profile ${HOME}/.bash_profile
