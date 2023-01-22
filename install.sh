@@ -70,7 +70,6 @@ function install_wezterm(){
         echo -en "Updating wezterm: "
         brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest &> /dev/null | return 1
     fi
-    mkdir -p 
     return 0
 }
 
@@ -148,7 +147,7 @@ function packer_sync(){
 }
 
 function install(){
-    installers="check_prereqs install_fonts install_tmux install_wezterm install_neovim configure_neovim packer_sync"
+    installers="check_prereqs install_fonts install_tmux install_wezterm install_neovim configure_environment packer_sync"
     for installer in $installers
     do
         $installer && ok || fail
