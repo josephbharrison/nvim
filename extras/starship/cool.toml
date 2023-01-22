@@ -1,0 +1,70 @@
+format = """
+[](bg:none fg:none)\
+[  ](bg:dark-blue fg:bold white)\
+[  ](fg:dark-blue bg:green)\
+[$directory ](fg:dark-blue bg:green)\
+[  ](fg:green bg:dark-magenta)\
+$git_branch\ 
+$git_status\
+[  ](fg:dark-magenta)\
+$docker_context\
+$golang\
+$lua\
+$nodjs\
+$python\
+$time 
+$character
+"""
+palette = 'tokyonight'
+
+[directory]
+read_only = " "
+style = "bg:green fg:bold black"
+format = "[$path]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"~/" = "ﮟ "
+"~" = "ﮟ"
+"ﮟ code" = ""
+"ﮟ Documents" = ""
+"ﮟ Desktop" = ""
+"ﮟ Downloads" = "ﰮ"
+[docker_context]
+symbol = " "
+
+[git_branch]
+style = 'bg:dark-magenta fg:bold light-magenta'
+symbol = " "
+format = '[on $symbol$branch(:$remote_branch) ]($style)'
+
+[git_status]
+style = 'bg:dark-magenta'
+format = '([\[$all_status$ahead_behind\] ]($style))'
+
+[golang]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rust]
+symbol = " "
+
+## Custom palettes
+[palettes.tokyonight]
+dark-blue = '#29394f'
+light-blue = '#719cd6'
+light-green = '#81b29a'
+black = '#000000'
+light-magenta = '#cdbbea'
+magenta = '#9d79d6'
+dark-magenta = '#4a2881'
+white = '#ffffff'

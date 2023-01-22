@@ -1,0 +1,97 @@
+format = """
+[](bg:none fg:none)\
+[  ](bg:dark-blue fg:bold white)\
+[  ](fg:dark-blue bg:light-yellow)\
+[$directory ](fg:dark-blue bg:light-yellow)\
+[  ](fg:light-yellow bg:dark-magenta)\
+$git_branch\ 
+$git_status\
+[  ](fg:dark-magenta)\
+$docker_context\
+$golang\
+$lua\
+$nodjs\
+$python\
+$time 
+$character
+"""
+
+palette = 'kanagawa'
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[❯](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[❯](bold red)" # used if previous command failed
+
+
+[directory]
+read_only = " "
+style = "bg:light-yellow fg:black"
+format = "[$path]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"~/" = "ﮟ "
+"~" = "ﮟ"
+"ﮟ code" = ""
+"ﮟ Documents" = ""
+"ﮟ Desktop" = ""
+"ﮟ Downloads" = "ﰮ"
+[docker_context]
+symbol = " "
+
+[git_branch]
+style = 'bg:dark-magenta fg:bold light-magenta'
+symbol = " "
+format = '[on $symbol$branch(:$remote_branch) ]($style)'
+
+[git_status]
+style = 'bg:dark-magenta'
+format = '([\[$all_status$ahead_behind\] ]($style))'
+
+[golang]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rust]
+symbol = " "
+
+## Custom palettes
+[palettes.tokyonight]
+dark-blue = '#29394F'
+light-blue = '#719CD6'
+light-green = '#81B29A'
+black = '#000000'
+light-magenta = '#CDBBEA'
+magenta = '#9D79D6'
+dark-magenta = '#4A2881'
+white = '#FFFFFF'
+
+[palettes.kanagawa]
+blue = '#7E9CD8'           # crystalBlue
+light-blue = '#7FB4CA'     # springBlue
+dark-blue = '#223249'      # waveBlue1
+green = '#98BB6C'          # sprintGreen
+light-green = '#76946A'    # autumnGreen
+dark-green = '#2B3328'     # winterGreen
+black = '#16161D'          # sumiInk0
+magenta = '#957FB8'        # oniViolet
+light-magenta = '#938AA9'  # sprintViolet1
+dark-magenta = '#2A2A37'   # sumiInk2
+yellow = '#FF9E3B'         # roninYellow
+# light-yellow = '#DCA561'   # autumnYellow
+light-yellow = '#E6C384'   # carpYellow
+dark-yellow = '#49443C'    # winterYellow
+red = '#E82424'            # samuraiRed
+light-red = '#C34043'      # autumnRed
+dark-red = '#43242B'       # winterRed
+white = '#DCD7BA'          # fujiWhite

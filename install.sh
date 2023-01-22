@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Get timestamp
+now=$(date +%s)
+
 # GLOBAL PARAMETERS
 FONTS="hack mononoki go-mono jetbrains-mono"
 ASTRONVIM_REPO=https://github.com/AstroNvim/AstroNvim
@@ -43,6 +46,34 @@ function install_fonts(){
     return 0
 }
 
+function install_tmux(){
+    # Install tmux
+    res=$(brew list tmux)
+    if [[ $? -ne 0 ]]; then
+        echo -en "Installing tmux: "
+        brew update &> /dev/null && brew install tmux &> /dev/null || return 1
+    else
+        echo -en "Updating tmux: "
+        brew upgrade tmux &> /dev/null || return 1
+    fi
+    return 0
+}
+
+function install_wezterm(){
+    # Install wezterm
+    res=$(brew list wezterm-nightly)
+    if [[ $? -ne 0 ]]; then
+        echo -en "Installing wezterm: "
+        brew tap wez/wezterm &> /dev/null
+        brew update &> /dev/null && brew install --cask wez/wezterm/wezterm-nightly &> /dev/null || return 1
+    else
+        echo -en "Updating wezterm: "
+        brew upgrade --cask wezterm-nightly --no-quarantine --greedy-latest &> /dev/null | return 1
+    fi
+    mkdir -p 
+    return 0
+}
+
 function install_neovim(){
     # Install dependencies
     res=$(brew list nvim)
@@ -57,17 +88,17 @@ function install_neovim(){
 }
 
 # Configure NeoVim
-function configure_neovim(){
-    echo -en "Configuring neovim: "
-
-    # Create base config if needed
-    now=$(date +%s)
+function configure_environment(){
+    echo -en "Configuring environment: "
     config_dir=${HOME}/.config
-    mkdir -p $config_dir
+    extras_dir=${config_dir}/nvim/extras
 
-    # Backup nvim configuration
-    nvim_config_dir=${config_dir}/nvim
-    [[ -d $nvim_config_dir ]] && mv -f $nvim_config_dir ${nvim_config_dir}.${now}.bak
+    # Backup configuration
+    [[ -d $config_dir ]] && mv -f $config_dir ${config_dir}.${now}.bak
+    mv -f ~/.bash_profile ~/.bash_profile.${now}.bak
+
+    # Create config directory
+    mkdir -p $config_dir
 
     # Backup nvim packages
     nvim_local_dir=${HOME}/.local/share/nvim
@@ -75,12 +106,30 @@ function configure_neovim(){
     [[ -d $nvim_site_dir ]] && mv -f $nvim_site_dir ${nvim_site_dir}.${now}.bak
 
     # Install nvim configuration
+    nvim_config_dir=${config_dir}/nvim
     if [[ $BASE_ONLY != true ]];then
         git clone $MY_REPO $nvim_config_dir &> /dev/null || return 1
     else
         git clone $ASTRONVIM_REPO $nvim_config_dir &> /dev/null || return 1
     fi
-    
+
+    # Configure tmux
+    mkdir -p $config_dir/tmux
+    cp $extras_dir/tmux/tmux.conf $config_dir/tmux/tmux.conf 
+    git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm &> /dev/null || return 1
+
+    # Configure wezterm
+    mkdir -p $config_dir/wezterm
+    cp $extras_dir/wezterm/wezterm.lua $config_dir/wezterm/wezterm.lua
+
+    # Configure starship
+    mkdir -p $config_dir/starship
+    cp $extras_dir/starship/* $config_dir/starship/
+    cp $config_dir/starship/default.toml $config_dir/
+
+    # Configure bash
+    cp $extras_dir/bash/.bash_profile ${HOME}/.bash_profile
+
     return 0
 }
 
@@ -99,7 +148,7 @@ function packer_sync(){
 }
 
 function install(){
-    installers="check_prereqs install_fonts install_neovim configure_neovim packer_sync"
+    installers="check_prereqs install_fonts install_tmux install_wezterm install_neovim configure_neovim packer_sync"
     for installer in $installers
     do
         $installer && ok || fail
@@ -111,6 +160,6 @@ install
 echo
 echo "Installation complete, run:"
 echo
-echo "    $(which nvim)"
+echo "  wezterm start nvim +PackerSync"
 echo
 
