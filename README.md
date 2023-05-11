@@ -1,5 +1,5 @@
 # DEPRECATED 
-See [Oni](https://raw.githubusercontent.com/josephbharrison/oni)
+## See [Oni](https://github.com/josephbharrison/oni)
 
 
 # NeoVim Installer - Mac OS X
