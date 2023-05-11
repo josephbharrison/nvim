@@ -1,8 +1,8 @@
 # DEPRECATED 
-## See [Oni](https://github.com/josephbharrison/oni)
+See [Oni](https://github.com/josephbharrison/oni)
 
 
-# NeoVim Installer - Mac OS X
+# (Deprecated) NeoVim Installer - Mac OS X
 
 [AstroNvim](https://astronvim.github.io) variant for Mac OS X
 
